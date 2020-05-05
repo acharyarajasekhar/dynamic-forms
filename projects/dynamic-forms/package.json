@@ -6,7 +6,6 @@
     "@angular/core": "^8.2.14",
     "bootstrap": "^4.4.1",
     "jquery": "^3.5.0",
-    "moment": "^2.25.3",
     "@acharyarajasekhar/busy-indicator": "^1.0.1",
     "@acharyarajasekhar/dynamic-dom-injector": "^1.0.0"
   }
