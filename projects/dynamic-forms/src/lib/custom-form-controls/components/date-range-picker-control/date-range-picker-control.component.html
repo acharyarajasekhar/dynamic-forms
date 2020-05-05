@@ -1,0 +1,16 @@
+<ion-list>
+  <ion-item lines="none">
+    <ion-label>
+      <ion-icon [src]="'assets/imgs/icons/' + icon + '.svg'"> </ion-icon>
+    </ion-label>
+    <ion-input type="text" readonly="true" [placeholder]="placeholder || 'Date Time Range'"></ion-input>
+  </ion-item>
+  <ion-item lines="none" (click)="openStartDatePicker()">
+    <ion-label>Start :</ion-label>
+    <ion-input [(ngModel)]="startDttm" (ionChange)="onStartChange($event)" ngDefaultControl readonly></ion-input>
+  </ion-item>
+  <ion-item (click)="openEndDatePicker()">
+    <ion-label>End   :</ion-label>
+    <ion-input [(ngModel)]="endDttm" (ionChange)="onEndChange($event)" ngDefaultControl readonly></ion-input>
+  </ion-item>
+</ion-list>

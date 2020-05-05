@@ -1,0 +1,34 @@
+<ion-list>
+    <ion-item-divider>
+        Postal Address
+    </ion-item-divider>
+    <ion-item lines="none">
+        <ion-label>
+            <ion-icon [src]="'assets/imgs/icons/roads.svg'"> </ion-icon>
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="Line1" placeholder="H.No, Street/Area" ngDefaultControl></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+        <ion-label>
+            <ion-icon [src]="'assets/imgs/icons/postoffice.svg'"> </ion-icon>
+        </ion-label>
+        <ion-input type="number" [(ngModel)]="postalCode" placeholder="PIN" ngDefaultControl></ion-input>
+        <ion-button fill="clear" (click)="CheckPinCode(postalCode)" [disabled]="!postalCode" slot="end"
+            class="smallbuttontext">Load<br />Post
+            Office(s)
+        </ion-button>
+    </ion-item>
+    <ion-item lines="none" *ngIf="this.postal?._display">
+        <p>{{ this.postal?._display }}</p>
+    </ion-item>
+    <ion-item lines="none" *ngIf="this.postal?._display">
+        <ion-label>
+            <ion-icon [src]="'assets/imgs/icons/latlong.svg'"> </ion-icon>
+        </ion-label>
+        <ion-input type="text" readonly="true" [(ngModel)]="latlng" placeholder="Lat, Lng" ngDefaultControl></ion-input>
+        <ion-button fill="clear" (click)="openMaps()" slot="end" class="smallbuttontext">
+            MAP
+        </ion-button>
+    </ion-item>
+    <ion-item-divider [attr.lines]="controlSeparator ? null : 'none'"> </ion-item-divider>
+</ion-list>

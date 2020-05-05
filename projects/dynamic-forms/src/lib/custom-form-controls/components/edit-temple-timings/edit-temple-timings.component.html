@@ -1,0 +1,72 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="dark" (click)="cancel()">
+        <ion-icon name="close"></ion-icon>&nbsp; Cancel
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="primary" (click)="ok()">
+        <ion-icon name="done-all"></ion-icon>&nbsp; Select
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-row>
+      <ion-col col-12>
+        <ion-item lines="none">
+          <ion-label color="primary">Same timings for all days</ion-label>
+          <ion-toggle [checked]="sameForAllDays" (ionChange)="onFlagChange($event)" ngDefaultControl></ion-toggle>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ng-container>
+      <ng-container *ngFor="let w of weekdays; let i = index">
+        <ion-row>
+          <ion-col size="3">
+            <ion-item lines="none">
+              <ion-label class="weekday">{{ w }}</ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col size="5" class="b-border">
+            <ion-item lines="none">
+              <ion-icon src="assets/imgs/icons/sun.svg" class="sun"> </ion-icon>
+              <ion-datetime placeholder="Close" [(ngModel)]="data[w + '_Morning_Open']" [displayFormat]="'hh:mm a'"
+                [pickerFormat]="'hh:mm a'" [disabled]="sameForAllDays && i!=0" (ionChange)="onTimeChange($event, w + '_Morning_Open')"
+                ngDefaultControl></ion-datetime>
+            </ion-item>
+          </ion-col>
+          <ion-col size="4" class="b-border">
+            <ion-item lines="none">
+              <ion-datetime placeholder="Close" [(ngModel)]="data[w + '_Morning_Close']" [displayFormat]="'hh:mm a'"
+                [pickerFormat]="'hh:mm a'" [disabled]="sameForAllDays && i!=0" (ionChange)="onTimeChange($event, w + '_Morning_Close')"
+                ngDefaultControl></ion-datetime>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="3" class="b-border">
+          </ion-col>
+          <ion-col size="5" class="b-border">
+            <ion-item lines="none">
+              <ion-icon src="assets/imgs/icons/moon.svg" class="moon"> </ion-icon>
+              <ion-datetime placeholder="Close" [(ngModel)]="data[w + '_Evening_Open']" [displayFormat]="'hh:mm a'"
+                [pickerFormat]="'hh:mm a'" [disabled]="sameForAllDays && i!=0" (ionChange)="onTimeChange($event, w + '_Evening_Open')"
+                ngDefaultControl></ion-datetime>
+            </ion-item>
+          </ion-col>
+          <ion-col size="4" class="b-border">
+            <ion-item lines="none">
+              <ion-datetime placeholder="Close" [(ngModel)]="data[w + '_Evening_Close']" [displayFormat]="'hh:mm a'"
+                [pickerFormat]="'hh:mm a'" [disabled]="sameForAllDays && i!=0" (ionChange)="onTimeChange($event, w + '_Evening_Close')"
+                ngDefaultControl></ion-datetime>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ng-container>
+    </ng-container>
+  </ion-list>
+</ion-content>

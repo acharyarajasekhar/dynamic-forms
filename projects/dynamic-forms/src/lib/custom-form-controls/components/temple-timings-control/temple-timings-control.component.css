@@ -1,0 +1,13 @@
+ion-grid {
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.13);
+    font-size: 13px;
+}
+
+.weekdaynames {
+    text-align: left;
+}
+
+.timings {
+    font-size: 12px;
+}

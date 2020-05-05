@@ -1,0 +1,33 @@
+<ion-item lines="none">
+  <ion-label>Temple Timings</ion-label>
+  <ion-button fill="clear" (click)="edit()" slot="end" class="smallbuttontext">
+    {{ !!value ? 'Edit' : 'Set' }}
+  </ion-button>
+</ion-item>
+<ion-grid>
+  <ion-row>
+    <ion-col size="2">
+    </ion-col>
+    <ion-col size="5">
+      <ion-icon src="assets/imgs/icons/sun.svg"></ion-icon> Morning
+    </ion-col>
+    <ion-col size="5" style="text-align: center;">
+      <ion-icon src="assets/imgs/icons/moon.svg"></ion-icon> Evening
+    </ion-col>
+  </ion-row>
+  <ng-container *ngFor="let w of weekdays">
+    <ion-row>
+      <ion-col size="2" class="weekdaynames">
+        {{ w }}
+      </ion-col>
+      <ion-col size="5" class="timings">
+        {{ getAmPm(value[w]?.Morning?.Open) || '__:__ am' }} - {{ getAmPm(value[w]?.Morning?.Close) || '__:__ am'
+        }}
+      </ion-col>
+      <ion-col size="5" class="timings">
+        {{ getAmPm(value[w]?.Evening?.Open) || '__:__ pm' }} - {{ getAmPm(value[w]?.Evening?.Close) || '__:__ pm'
+        }}
+      </ion-col>
+    </ion-row>
+  </ng-container>
+</ion-grid>

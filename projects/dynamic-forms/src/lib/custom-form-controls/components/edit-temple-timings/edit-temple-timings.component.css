@@ -1,0 +1,40 @@
+.item-md {
+    font-size: 1.0rem;
+}
+
+.item-block {
+    min-height: 1.4rem;
+}
+
+.item-md [item-left],
+.item-md [item-right],
+.item-md [item-start],
+.item-md [item-end] {
+    margin: 0px;
+    padding: 0px;
+}
+
+.weekday {
+    font-size: 1.2rem;
+    color: darkgreen;
+}
+
+.weekday-disabled {
+    color: lightgoldenrodyellow;
+}
+
+.sun {
+    color: yellow;
+}
+
+.moon {
+    color: skyblue;
+}
+
+ion-header {
+    background-color: white;
+}
+
+ion-datetime {
+    font-size: 14px;
+}

@@ -1,0 +1,19 @@
+<ion-list>
+    <ion-item lines="none">
+        <ion-label>
+            <ion-icon src="assets/imgs/icons/gallery.svg"> </ion-icon>
+        </ion-label>
+        <ion-input type="text" readonly="true" [placeholder]="title || 'Photos'"></ion-input>
+        <ion-button fill="clear" (click)="openImagePicker()" slot="end" class="smallbuttontext" [disabled]="!!canClear">
+            Browse</ion-button>
+        <ion-button fill="clear" (click)="clearImages()" color="danger" slot="end" class="smallbuttontext"
+            [disabled]="!canClear">Clear</ion-button>
+    </ion-item>
+    <ion-item lines="none">
+        <ion-row>
+            <ion-col *ngFor="let c of counter; let i = index"><img class="cover-style" [src]="getPhoto(i)"
+                    [zoomable]="getPhoto(i)" /></ion-col>
+        </ion-row>
+    </ion-item>
+    <ion-item-divider> </ion-item-divider>
+</ion-list>

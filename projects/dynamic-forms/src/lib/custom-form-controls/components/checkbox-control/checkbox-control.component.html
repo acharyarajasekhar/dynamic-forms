@@ -1,0 +1,11 @@
+<ion-item lines="none">
+    <ion-icon slot="start" [src]="'assets/imgs/icons/' + icon + '.svg'"> </ion-icon>
+    <ion-label>
+        {{ placeholder }}
+    </ion-label>
+    <ion-checkbox slot="end" [checked]="value" (ionChange)="onSelection($event)" color="danger" ngDefaultControl>
+    </ion-checkbox>
+</ion-item>
+<ion-item [attr.lines]="controlSeparator ? null : 'none'">
+    <ion-note color="danger">{{ description }}</ion-note>
+</ion-item>
