@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms';
 import { ControlBase } from '../controls/control-base';
-import { addressValidator } from '../../custom-form-validators/address-validator';
-import { dobValidator } from '../../custom-form-validators/dob-validator';
-import { dateRangeValidator } from '../../custom-form-validators/date-range-validator';
-import { templeTimingsValidator } from '../../custom-form-validators/temple-timings-validator';
+// import { addressValidator } from '../../custom-form-validators/address-validator';
+// import { dobValidator } from '../../custom-form-validators/dob-validator';
+// import { dateRangeValidator } from '../../custom-form-validators/date-range-validator';
+// import { templeTimingsValidator } from '../../custom-form-validators/temple-timings-validator';
 
 @Injectable({
   providedIn: 'root'
@@ -37,21 +37,21 @@ export class DynamicControlsService {
         if (!!control.validators.min) {
           validatorFns.push(Validators.min(control.validators.min.min));
         }
-        if (!!control.validators.address) {
-          validatorFns.push(addressValidator);
-        }
-        if (!!control.validators.dob) {
-          validatorFns.push(dobValidator(control.validators.dob.min, control.validators.dob.max));
-        }
-        if (!!control.validators.dateRange) {
-          validatorFns.push(dateRangeValidator);
-        }
-        if (!!control.validators.templeTimings) {
-          validatorFns.push(templeTimingsValidator);
-        }
-        if (!!control.validators.improperTempleTimings) {
-          validatorFns.push(templeTimingsValidator);
-        }
+        // if (!!control.validators.address) {
+        //   validatorFns.push(addressValidator);
+        // }
+        // if (!!control.validators.dob) {
+        //   validatorFns.push(dobValidator(control.validators.dob.min, control.validators.dob.max));
+        // }
+        // if (!!control.validators.dateRange) {
+        //   validatorFns.push(dateRangeValidator);
+        // }
+        // if (!!control.validators.templeTimings) {
+        //   validatorFns.push(templeTimingsValidator);
+        // }
+        // if (!!control.validators.improperTempleTimings) {
+        //   validatorFns.push(templeTimingsValidator);
+        // }
       }
 
       let formControl = new FormControl(control.value, { validators: validatorFns });

@@ -1,9 +1,0 @@
-<ion-item>
-  <ion-label>
-    <ion-icon [src]="'assets/imgs/icons/' + icon + '.svg'"> </ion-icon>
-  </ion-label>
-  <ion-select multiple [interfaceOptions]="{ subHeader: placeholder }" [(ngModel)]="value"
-    (ionChange)="onSelection($event)" [placeholder]="placeholder" style="max-width: 90%;" ngDefaultControl>
-    <ion-select-option *ngFor="let option of options" [value]="option">{{option}}</ion-select-option>
-  </ion-select>
-</ion-item>
