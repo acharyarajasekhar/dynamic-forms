@@ -84,6 +84,20 @@
           </ng-container>
 
 
+          <ng-container *ngSwitchCase="'multiselect'">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
+              </div>
+            </div>
+            <select class="selectpicker custom-select form-control" multiple data-actions-box="true" data-size="4"
+              [formControlName]="control.name" [id]="control.name"
+              [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
+              [title]="control.label" ngDefaultControl>
+              <option *ngFor="let option of control.options">{{option}}</option>
+            </select>
+          </ng-container>
+
           <div class="invalid-feedback">
             <ng-container *ngFor="let validation of control.validations">
               <div class="error-message" *ngIf="controlRef.hasError(validation?.type) && displayErrors">
@@ -99,3 +113,8 @@
   </ng-container>
 
 </form>
+
+<!-- <ion-select multiple [interfaceOptions]="{ subHeader: placeholder }" [(ngModel)]="value"
+  (ionChange)="onSelection($event)" [placeholder]="placeholder" style="max-width: 90%;" ngDefaultControl>
+  <ion-select-option *ngFor="let option of options" [value]="option">{{option}}</ion-select-option>
+</ion-select> -->

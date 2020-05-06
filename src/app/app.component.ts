@@ -96,21 +96,21 @@ const formConfig = {
         min: { min: 0, message: "Monthly Salary  must be greater than 0" }
       }
     },
-    // {
-    //   "type": "multiselect",
-    //   "icon": "supplyfree",
-    //   "title": "Do you provide",
-    //   "options": [
-    //     "Accommodation",
-    //     "LPG",
-    //     "Rice",
-    //     "Vegetables",
-    //     "Milk"
-    //   ],
-    //   "order": 3,
-    //   "name": "additionals",
-    //   "validators": null
-    // },
+    {
+      "type": "multiselect",
+      "icon": "supplyfree",
+      "title": "Do you provide",
+      "options": [
+        "Accommodation",
+        "LPG",
+        "Rice",
+        "Vegetables",
+        "Milk"
+      ],
+      "order": 3,
+      "name": "additionals",
+      "validators": null
+    },
     {
       "type": "text",
       "icon": "avatar",
