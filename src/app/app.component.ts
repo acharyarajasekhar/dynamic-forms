@@ -72,14 +72,14 @@ const formConfig = {
         maxLength: { length: 5000, message: "Description cannot be more than 5000 characters long" }
       }
     },
-    {
-      "order": 1,
-      "title": "Cover Photos",
-      "name": "photos",
-      "type": "photos",
-      "max": 5,
-      "validators": null
-    },
+    // {
+    //   "order": 1,
+    //   "title": "Cover Photos",
+    //   "name": "photos",
+    //   "type": "photos",
+    //   "max": 5,
+    //   "validators": null
+    // },
     {
       "type": "currency",
       "icon": "rupee",
@@ -96,21 +96,21 @@ const formConfig = {
         min: { min: 0, message: "Monthly Salary  must be greater than 0" }
       }
     },
-    {
-      "type": "multiselect",
-      "icon": "supplyfree",
-      "title": "Do you provide",
-      "options": [
-        "Accommodation",
-        "LPG",
-        "Rice",
-        "Vegetables",
-        "Milk"
-      ],
-      "order": 3,
-      "name": "additionals",
-      "validators": null
-    },
+    // {
+    //   "type": "multiselect",
+    //   "icon": "supplyfree",
+    //   "title": "Do you provide",
+    //   "options": [
+    //     "Accommodation",
+    //     "LPG",
+    //     "Rice",
+    //     "Vegetables",
+    //     "Milk"
+    //   ],
+    //   "order": 3,
+    //   "name": "additionals",
+    //   "validators": null
+    // },
     {
       "type": "text",
       "icon": "avatar",

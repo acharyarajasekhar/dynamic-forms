@@ -1,88 +1,101 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="form">
+
   <ng-container *ngFor="let control of controls" [ngSwitch]="control.controlType">
-    <div class="form-group" *ngSwitchCase="'textbox'">
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
+    <ng-container *ngIf="form.get(control.name) as controlRef">
+
+      <div class="form-group">
+        <div class="input-group mb-2">
+
+          <ng-container *ngSwitchCase="'textbox'">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
+              </div>
+            </div>
+            <input [type]="control.type" class="form-control"
+              [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
+              [formControlName]="control.name" [id]="control.name" [placeholder]="control.label" ngDefaultControl>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'email'">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
+              </div>
+            </div>
+            <input [type]="control.type" class="form-control" [formControlName]="control.name" [id]="control.name"
+              [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
+              [placeholder]="control.label" ngDefaultControl>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'currency'">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
+              </div>
+            </div>
+            <input [type]="'number'" class="form-control" [formControlName]="control.name" [id]="control.name"
+              [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
+              [placeholder]="control.label" ngDefaultControl>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'date'">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
+              </div>
+            </div>
+            <input [type]="'date'" class="form-control" [formControlName]="control.name" [id]="control.name"
+              [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
+              [placeholder]="control.label" min="2018-01-01" max="2018-12-31" ngDefaultControl>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'time'">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
+              </div>
+            </div>
+            <input [type]="'time'" class="form-control" [formControlName]="control.name" [id]="control.name"
+              [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
+              [placeholder]="control.label" min="09:00" max="18:00" ngDefaultControl>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'datetime'">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
+              </div>
+            </div>
+            <input [type]="'datetime-local'" class="form-control" [formControlName]="control.name" [id]="control.name"
+              [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
+              [placeholder]="control.label" min="2018-06-07T09:00" max="2018-06-14T18:00" ngDefaultControl>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'textarea'">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
+              </div>
+            </div>
+            <textarea class="form-control" [formControlName]="control.name" [id]="control.name"
+              [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
+              [placeholder]="control.label" ngDefaultControl></textarea>
+          </ng-container>
+
+
+          <div class="invalid-feedback">
+            <ng-container *ngFor="let validation of control.validations">
+              <div class="error-message" *ngIf="controlRef.hasError(validation?.type) && displayErrors">
+                {{ validation?.message }}
+              </div>
+            </ng-container>
           </div>
+
         </div>
-        <input [type]="control.type" class="form-control" [formControlName]="control.name" [id]="control.name"
-          [placeholder]="control.label" ngDefaultControl>
       </div>
-    </div>
-    <div class="form-group" *ngSwitchCase="'email'">
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
-          </div>
-        </div>
-        <input [type]="control.type" class="form-control" [formControlName]="control.name" [id]="control.name"
-          [placeholder]="control.label" ngDefaultControl>
-      </div>
-    </div>
-    <div class="form-group" *ngSwitchCase="'currency'">
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
-          </div>
-        </div>
-        <input [type]="'number'" class="form-control" [formControlName]="control.name" [id]="control.name"
-          [placeholder]="control.label" ngDefaultControl>
-      </div>
-    </div>
-    <div class="form-group" *ngSwitchCase="'date'">
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
-          </div>
-        </div>
-        <input [type]="'date'" class="form-control" [formControlName]="control.name" [id]="control.name"
-          [placeholder]="control.label" min="2018-01-01" max="2018-12-31" ngDefaultControl>
-      </div>
-    </div>
-    <div class="form-group" *ngSwitchCase="'time'">
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
-          </div>
-        </div>
-        <input [type]="'time'" class="form-control" [formControlName]="control.name" [id]="control.name"
-          [placeholder]="control.label" min="09:00" max="18:00" ngDefaultControl>
-      </div>
-    </div>
-    <div class="form-group" *ngSwitchCase="'datetime'">
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
-          </div>
-        </div>
-        <input [type]="'datetime-local'" class="form-control" [formControlName]="control.name" [id]="control.name"
-          [placeholder]="control.label" min="2018-06-07T09:00" max="2018-06-14T18:00" ngDefaultControl>
-      </div>
-    </div>
-    <div class="form-group" *ngSwitchCase="'textarea'">
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
-          </div>
-        </div>
-        <textarea class="form-control" rows [formControlName]="control.name" [id]="control.name"
-          [placeholder]="control.label" ngDefaultControl></textarea>
-      </div>
-    </div>
-    <div class="validation-errors">
-      <ng-container *ngFor="let validation of control.validations">
-        <div class="error-message" *ngIf="form.get(control.name)?.hasError(validation?.type) && displayErrors">
-          {{ validation?.message }}
-        </div>
-      </ng-container>
-    </div>
+
+    </ng-container>
   </ng-container>
+
 </form>
