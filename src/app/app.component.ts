@@ -97,7 +97,7 @@ const formConfig = {
       }
     },
     {
-      "type": "multiselect",
+      "type": "select",
       "icon": "supplyfree",
       "title": "Do you provide",
       "options": [
@@ -107,6 +107,25 @@ const formConfig = {
         "Vegetables",
         "Milk"
       ],
+      "multiple": false,
+      "order": 3,
+      "value": null,
+      "name": "additionals1",
+      "validators": null
+    },
+    {
+      "type": "select",
+      "icon": "supplyfree",
+      "title": "Do you provide",
+      "multiple": true,
+      "options": [
+        "Accommodation",
+        "LPG",
+        "Rice",
+        "Vegetables",
+        "Milk"
+      ],
+      "value": null,
       "order": 3,
       "name": "additionals",
       "validators": null

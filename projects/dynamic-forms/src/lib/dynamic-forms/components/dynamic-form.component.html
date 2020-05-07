@@ -84,17 +84,17 @@
           </ng-container>
 
 
-          <ng-container *ngSwitchCase="'multiselect'">
+          <ng-container *ngSwitchCase="'select'">
             <div class="input-group-prepend">
               <div class="input-group-text">
                 <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
               </div>
             </div>
-            <select class="selectpicker custom-select form-control" multiple data-actions-box="true" data-size="4"
+            <select class="selectpicker custom-select form-control" [multiple]="control.multiple" data-actions-box="true" data-size="4"
               [formControlName]="control.name" [id]="control.name"
               [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
               [title]="control.label" ngDefaultControl>
-              <option *ngFor="let option of control.options">{{option}}</option>
+              <option *ngFor="let option of control.options" [value]="option">{{option}}</option>
             </select>
           </ng-container>
 

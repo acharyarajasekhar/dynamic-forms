@@ -18,9 +18,12 @@ import { ControlBase } from './control-base';
 export class SelectControl extends ControlBase<string> {
   controlType = 'select';
   options: { key: string, value: string }[] = [];
+  multiple: boolean = false;
 
   constructor(options: {} = {}) {
     super(options);
     this.options = options['options'] || [];
+    this.multiple = options['multiple'] || false;
+    this.value = options[this.value] || null;
   }
 }
