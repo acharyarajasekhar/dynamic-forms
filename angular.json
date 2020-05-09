@@ -21,12 +21,47 @@
             "aot": false,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
             ],
             "styles": [
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/bootstrap-select/dist/css/bootstrap-select.min.css"
+              "node_modules/bootstrap-select/dist/css/bootstrap-select.min.css",
+              {
+                "input": "node_modules/@ionic/angular/css/normalize.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/structure.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/typography.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/core.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/padding.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/float-elements.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-alignment.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-transformation.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/flex-utils.css"
+              },
+              {
+                "input": "src/theme/variables.css"
+              }
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -124,6 +159,30 @@
               "devServerTarget": "dynamic-forms-demo:serve:production"
             }
           }
+        },
+        "ionic-cordova-serve": {
+          "builder": "@ionic/angular-toolkit:cordova-serve",
+          "options": {
+            "cordovaBuildTarget": "dynamic-forms-demo:ionic-cordova-build",
+            "devServerTarget": "dynamic-forms-demo:serve"
+          },
+          "configurations": {
+            "production": {
+              "cordovaBuildTarget": "dynamic-forms-demo:ionic-cordova-build:production",
+              "devServerTarget": "dynamic-forms-demo:serve:production"
+            }
+          }
+        },
+        "ionic-cordova-build": {
+          "builder": "@ionic/angular-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "dynamic-forms-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "dynamic-forms-demo:build:production"
+            }
+          }
         }
       }
     },
@@ -154,6 +213,76 @@
             "tsConfig": [
               "projects/dynamic-forms/tsconfig.lib.json",
               "projects/dynamic-forms/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "custom-form-controls": {
+      "projectType": "library",
+      "root": "projects/custom-form-controls",
+      "sourceRoot": "projects/custom-form-controls/src",
+      "prefix": "cfc",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/custom-form-controls/tsconfig.lib.json",
+            "project": "projects/custom-form-controls/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/custom-form-controls/src/test.ts",
+            "tsConfig": "projects/custom-form-controls/tsconfig.spec.json",
+            "karmaConfig": "projects/custom-form-controls/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/custom-form-controls/tsconfig.lib.json",
+              "projects/custom-form-controls/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "elastic-textarea": {
+      "projectType": "library",
+      "root": "projects/elastic-textarea",
+      "sourceRoot": "projects/elastic-textarea/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/elastic-textarea/tsconfig.lib.json",
+            "project": "projects/elastic-textarea/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/elastic-textarea/src/test.ts",
+            "tsConfig": "projects/elastic-textarea/tsconfig.spec.json",
+            "karmaConfig": "projects/elastic-textarea/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/elastic-textarea/tsconfig.lib.json",
+              "projects/elastic-textarea/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

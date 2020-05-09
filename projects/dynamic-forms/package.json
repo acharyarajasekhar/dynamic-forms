@@ -7,6 +7,7 @@
     "bootstrap": "^4.4.1",
     "jquery": "^3.5.0",
     "bootstrap-select": "^1.13.16",
+    "@ionic/angular": "^5.1.0",
     "@acharyarajasekhar/busy-indicator": "^1.0.1",
     "@acharyarajasekhar/dynamic-dom-injector": "^1.0.0"
   }

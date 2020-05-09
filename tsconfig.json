@@ -24,6 +24,18 @@
       ],
       "dynamic-forms/*": [
         "dist/dynamic-forms/*"
+      ],
+      "custom-form-controls": [
+        "dist/custom-form-controls"
+      ],
+      "custom-form-controls/*": [
+        "dist/custom-form-controls/*"
+      ],
+      "elastic-textarea": [
+        "dist/elastic-textarea"
+      ],
+      "elastic-textarea/*": [
+        "dist/elastic-textarea/*"
       ]
     }
   },

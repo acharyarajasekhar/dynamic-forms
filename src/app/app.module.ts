@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DynamicFormsModule } from 'projects/dynamic-forms/src/public-api';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { DynamicFormsModule } from 'projects/dynamic-forms/src/public-api';
   ],
   imports: [
     BrowserModule,
-    DynamicFormsModule
+    DynamicFormsModule,
+    IonicModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,7 +3,6 @@ import { ControlDescriptor } from '../controls/control';
 import { TextboxControl } from '../controls/textbox.control';
 import { TextareaControl } from '../controls/textarea.control';
 import { SelectControl } from '../controls/select.control';
-import { MultiSelectControl } from '../controls/multi.select.control';
 import { RangeControl } from '../controls/range.control';
 import { CurrencyControl } from '../controls/currency.control';
 import { AddressControl } from '../controls/address.control';
@@ -15,6 +14,7 @@ import { CheckboxControl } from '../controls/checkbox.control';
 import { DateRangeTimeControl } from '../controls/daterange.control';
 import { DateControl } from '../controls/date.control';
 import { TimeControl } from '../controls/time.control';
+import { FilesControl } from '../controls/files.control';
 
 @Injectable({
   providedIn: 'root'
@@ -49,8 +49,6 @@ export class ControlsService {
           return new TextareaControl(options);
         case 'select':
           return new SelectControl(options);
-        case 'multiselect':
-          return new MultiSelectControl(options);
         case 'range':
           return new RangeControl(options);
         case 'currency':
@@ -65,6 +63,8 @@ export class ControlsService {
           return new DateTimeControl(options);
         case 'daterange':
           return new DateRangeTimeControl(options);
+        case 'files':
+          return new FilesControl(options);
         case 'photos':
           return new PhotosControl(options);
         case 'templeTimings':

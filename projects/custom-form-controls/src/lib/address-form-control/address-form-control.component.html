@@ -1,0 +1,34 @@
+<div class="input-group mb-2">
+
+    <div class="input-group-prepend">
+        <div class="input-group-text" style="width: 50px;">
+            <ion-icon [src]="iconSource" style="font-size: 24px;"> </ion-icon>
+        </div>
+    </div>
+
+    <div class="vertical-input-group" id="addressFormContent">
+
+        <div class="input-group">
+            <textarea type="text" class="form-control" elasticize [(ngModel)]="AddressLine"
+                placeholder="H.No, Street/Area"></textarea>
+        </div>
+
+        <div class="input-group">
+            <div class="input-group mb-3" style="margin-bottom: 0px !important;">
+                <input type="number" class="form-control" [(ngModel)]="pinCode" placeholder="Pin Code">
+                <div class="input-group-append">
+                    <button class="btn btn-dark" type="button" (click)="getPostOfficeList()">
+                        <ion-icon name="caret-forward-outline"></ion-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label class="form-control"
+                style="height:  auto;">{{ !!postOfficeDisplay ? postOfficeDisplay : 'Postal Address (Auto Filled)' }}</label>
+        </div>
+
+    </div>
+
+</div>

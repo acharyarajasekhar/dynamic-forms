@@ -1,0 +1,26 @@
+<div class="input-group">
+
+    <div class="input-group-prepend">
+        <div class="input-group-text" style="width: 50px;">
+            <ion-icon [src]="iconSource" style="font-size: 24px;"> </ion-icon>
+        </div>
+    </div>
+
+    <div class="vertical-input-group" id="customFormContent">
+
+        <div class="input-group">
+            <label class="form-control" style="height:  auto;">
+                <img [src]="item" class="img-thumbnail" *ngFor="let item of selectedFiles" alt="Cinque Terre"
+                    width="100" height="100">
+            </label>
+        </div>
+
+        <div class="input-group">
+            <input type="file" class="custom-file-input form-control" [multiple]="control.multiple"
+                [accept]="control.accept" (change)="onFileChange($event)" ngDefaultControl>
+            <label class="custom-file-label">{{ control.label }}</label>
+        </div>
+
+    </div>
+
+</div>

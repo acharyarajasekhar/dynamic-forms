@@ -90,12 +90,41 @@
                 <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
               </div>
             </div>
-            <select class="selectpicker custom-select form-control" [multiple]="control.multiple" data-actions-box="true" data-size="4"
-              [formControlName]="control.name" [id]="control.name"
+            <select class="selectpicker custom-select form-control" [multiple]="control.multiple"
+              data-actions-box="true" data-size="4" [formControlName]="control.name" [id]="control.name"
               [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
               [title]="control.label" ngDefaultControl>
               <option *ngFor="let option of control.options" [value]="option">{{option}}</option>
             </select>
+          </ng-container>
+
+          <!-- <ng-container *ngSwitchCase="'files'">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <ion-icon [src]="">></ion-icon>
+              </div>
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input form-control" [multiple]="control.multiple"
+                [accept]="control.accept" [formControlName]="control.name" [id]="control.name"
+                [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
+                ngDefaultControl>
+              <label class="custom-file-label">{{ control.label }}</label>
+            </div>
+          </ng-container> -->
+
+          <ng-container *ngSwitchCase="'address'">
+            <address-form-control [formControlName]="control.name" [id]="control.name" style="width: 100%;"
+              [iconSource]="'' + svgIconBasePath + control.icon + '.svg'"
+              [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
+              ngDefaultControl></address-form-control>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'photos'">
+            <photos-form-control [formControlName]="control.name" [id]="control.name" style="width: 100%;"
+              [control]="control" [iconSource]="'' + svgIconBasePath + control.icon + '.svg'"
+              [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
+              ngDefaultControl></photos-form-control>
           </ng-container>
 
           <div class="invalid-feedback">

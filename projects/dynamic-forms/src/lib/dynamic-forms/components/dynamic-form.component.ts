@@ -40,6 +40,7 @@ console.log(this.controls);
   }
 
   onSubmit() {
+    console.log(this.form.value);
     this.submit.next(this.form.value);
   }
 

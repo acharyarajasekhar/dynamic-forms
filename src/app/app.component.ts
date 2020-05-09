@@ -32,6 +32,7 @@ export class AppComponent {
   }
 
   onSave() {
+    console.log(this.submitted);
     if (this.form.invalid) {
       let errorMessage = '';
       for (let c in this.form.controls) {
@@ -72,14 +73,17 @@ const formConfig = {
         maxLength: { length: 5000, message: "Description cannot be more than 5000 characters long" }
       }
     },
-    // {
-    //   "order": 1,
-    //   "title": "Cover Photos",
-    //   "name": "photos",
-    //   "type": "photos",
-    //   "max": 5,
-    //   "validators": null
-    // },
+    {
+      "order": 1,
+      "icon": "details",
+      "title": "Choose Cover Photos",
+      "name": "photos",
+      "type": "photos",
+      "multiple": true,
+      "accept": ".png, .jpg, .jpeg",
+      "max": 5,
+      "validators": null
+    },
     {
       "type": "currency",
       "icon": "rupee",
@@ -200,6 +204,7 @@ const formConfig = {
       "title": "Temple Address",
       "name": "address",
       "type": "address",
+      "icon": "postoffice",
       "validators": {
         required: { message: "Address is required" },
         address: { message: "Incomplete address details" }
