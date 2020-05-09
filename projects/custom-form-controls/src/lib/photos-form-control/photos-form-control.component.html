@@ -8,7 +8,7 @@
 
     <div class="vertical-input-group" id="customFormContent">
 
-        <div class="input-group">
+        <div class="input-group" *ngIf="selectedFiles.length > 0">
             <label class="form-control" style="height:  auto;">
                 <img [src]="item" class="img-thumbnail" *ngFor="let item of selectedFiles" alt="Cinque Terre"
                     width="100" height="100">
