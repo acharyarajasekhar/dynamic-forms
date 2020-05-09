@@ -29,6 +29,22 @@
                 style="height:  auto;">{{ !!postOfficeDisplay ? postOfficeDisplay : 'Postal Address (Auto Filled)' }}</label>
         </div>
 
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">lat</span>
+            </div>
+            <label class="form-control latlng">{{ lat }}</label>
+            <div class="input-group-prepend">
+                <span class="input-group-text">lng</span>
+            </div>
+            <label class="form-control latlng">{{ lng }}</label>
+            <div class="input-group-append">
+                <button class="btn btn-dark" type="button" (click)="getOrSetLocation()">
+                    <ion-icon name="location"></ion-icon>
+                </button>
+            </div>
+        </div>
+
     </div>
 
 </div>

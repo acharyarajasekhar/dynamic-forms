@@ -26,3 +26,9 @@
 #addressFormContent {
     width: calc(100% - 50px);;
 }
+
+.latlng {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}

@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { BusyIndicatorService } from '@acharyarajasekhar/busy-indicator';
 import { take } from 'rxjs/operators';
 import * as _ from 'lodash';
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController, ModalController } from '@ionic/angular';
+import { GoogleMapsComponent } from 'projects/google-maps/src/public-api';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,36 @@ export class AddressFormControlService {
 
   constructor(
     private http: HttpClient,
+    private modalController: ModalController,
     private actionSheetController: ActionSheetController,
     private busyInd: BusyIndicatorService) { }
+
+  getLocation(lat: number, lng: number, title: string, popover: string) {
+
+    return new Promise(async (res, rej) => {
+
+      const modal = await this.modalController.create({
+        component: GoogleMapsComponent,
+        componentProps: {
+          lat: lat,
+          lng: lng,
+          readonly: false,
+          title: title,
+          message: popover
+        }
+      });
+
+      modal.onDidDismiss().then(resp => {
+        if (!!resp.data) {
+          res({ lat: resp.data.lat, lng: resp.data.lng });
+        }
+      }).catch(err => rej(err));
+
+      await modal.present();
+
+    });
+
+  }
 
   getDetailsByPINCode(pinCode: number) {
     return new Promise(res => {

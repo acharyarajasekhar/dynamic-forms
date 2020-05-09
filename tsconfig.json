@@ -36,6 +36,12 @@
       ],
       "elastic-textarea/*": [
         "dist/elastic-textarea/*"
+      ],
+      "google-maps": [
+        "dist/google-maps"
+      ],
+      "google-maps/*": [
+        "dist/google-maps/*"
       ]
     }
   },

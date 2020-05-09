@@ -1,0 +1,22 @@
+ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+    --color: var(--ion-color-dark);
+    --border-style: none;
+}
+
+ion-button {
+    --background: rgba(0, 0, 0, 0.7) !important;
+    color: var(--ion-color-light);
+}
+
+ion-content {
+    top: -56px;
+    --offset-bottom: 56px !important;
+    --padding-bottom: -56px !important;
+}
+
+#map {
+    height: 100% !important;
+    width: 100% !important;
+}

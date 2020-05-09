@@ -16,6 +16,8 @@ export class AddressFormControlComponent implements ControlValueAccessor {
 
   @Input() iconSource: string;
 
+  lat: number;
+  lng: number;
   pinCode: number;
   postOfficeDisplay: string;
 
@@ -29,23 +31,33 @@ export class AddressFormControlComponent implements ControlValueAccessor {
   set PostOffice(value) { this.postOffice = value; this.emitChanges(); }
 
 
-  constructor(private postAddressService: AddressFormControlService) { }
+  constructor(private addressFormControlService: AddressFormControlService) { }
 
   getPostOfficeList() {
     this.postOffice = {};
     this.postOfficeDisplay = null;
     if (!!this.pinCode) {
-      this.postAddressService.getDetailsByPINCode(this.pinCode).then((office: any) => {
+      this.addressFormControlService.getDetailsByPINCode(this.pinCode).then((office: any) => {
         this.PostOffice = office;
         this.postOfficeDisplay = office.display;
       });
     }
   }
 
+  getOrSetLocation() {
+    this.addressFormControlService.getLocation(this.lat, this.lng, "Title", this.postOfficeDisplay).then((location: any) => {
+      this.lat = location.lat;
+      this.lng = location.lng;
+      this.emitChanges();
+    });
+  }
+
   emitChanges() {
     let value = {
       addressLine: this.addressLine,
-      ...this.postOffice
+      ...this.postOffice,
+      lat: this.lat,
+      lng: this.lng
     }
     console.log(value);
     this.onChange(value);
@@ -59,6 +71,8 @@ export class AddressFormControlComponent implements ControlValueAccessor {
       this.postOffice = value;
       this.pinCode = value.pinCode;
       this.postOfficeDisplay = value.display;
+      this.lat = value.lat;
+      this.lng = value.lng;
     }
   }
 

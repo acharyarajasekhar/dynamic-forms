@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BusyIndicatorModule } from '@acharyarajasekhar/busy-indicator';
 import { FormsModule } from '@angular/forms';
 import { ElasticTextareaModule } from 'projects/elastic-textarea/src/public-api';
+import { GoogleMapsModule } from 'projects/google-maps/src/public-api';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ElasticTextareaModule } from 'projects/elastic-textarea/src/public-api'
     FormsModule,
     HttpClientModule,
     BusyIndicatorModule,
-    ElasticTextareaModule
+    ElasticTextareaModule,
+    GoogleMapsModule
   ],
   exports: [
     AddressFormControlComponent
