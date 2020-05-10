@@ -4,10 +4,8 @@ import { DynamicFormComponent } from './components/dynamic-form.component';
 import { ControlsService } from './services/controls.service';
 import { DynamicControlsService } from './services/dynamic-controls.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AddressFormControlModule } from 'projects/custom-form-controls/src/public-api';
-import { PhotosFormControlModule } from 'projects/custom-form-controls/src/lib/photos-form-control/photos-form-control.module';
-// import { CustomFormControlsModule } from '../custom-form-controls/custom-form-controls.module';
-// import { ElasticTextAreaModule } from '../../elastic-textarea/elastic-textarea.module';
+import { AddressFormControlModule, PhotosFormControlModule } from '@acharyarajasekhar/custom-form-controls';
+import { ElasticTextareaModule } from '@acharyarajasekhar/elastic-textarea';
 
 @NgModule({
   imports: [
@@ -15,8 +13,8 @@ import { PhotosFormControlModule } from 'projects/custom-form-controls/src/lib/p
     FormsModule,
     ReactiveFormsModule,
     AddressFormControlModule,
-    PhotosFormControlModule
-    // ElasticTextAreaModule
+    PhotosFormControlModule,
+    ElasticTextareaModule
   ],
   declarations: [
     DynamicFormComponent

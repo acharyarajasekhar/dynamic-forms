@@ -12,6 +12,7 @@
   "private": true,
   "dependencies": {
     "@acharyarajasekhar/busy-indicator": "^1.0.1",
+    "@acharyarajasekhar/custom-form-controls": "^1.0.1",
     "@acharyarajasekhar/dynamic-dom-injector": "^1.0.0",
     "@acharyarajasekhar/elastic-textarea": "^1.0.0",
     "@acharyarajasekhar/google-maps": "^1.0.0",
