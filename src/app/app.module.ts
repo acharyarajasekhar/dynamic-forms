@@ -2,9 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { DynamicFormsModule } from 'projects/dynamic-forms/src/public-api';
+import { DynamicFormsModule } from '@acharyarajasekhar/dynamic-forms';
 import { IonicModule } from '@ionic/angular';
-import { GoogleMapsModule } from 'projects/google-maps/src/public-api';
+import { GoogleMapsModule } from '@acharyarajasekhar/google-maps';
 
 @NgModule({
   declarations: [
