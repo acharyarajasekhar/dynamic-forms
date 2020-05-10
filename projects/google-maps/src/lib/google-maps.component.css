@@ -20,3 +20,15 @@ ion-content {
     height: 100% !important;
     width: 100% !important;
 }
+
+#locateMe {
+    background-color: white;
+    -webkit-mask-image: url('/assets/imgs/icons/recenter.svg');
+    mask-image: url('/assets/imgs/icons/recenter.svg');
+}
+
+#setCenter {
+    background-color: white;
+    -webkit-mask-image: url('/assets/imgs/icons/recenter.svg');
+    mask-image: url('/assets/imgs/icons/recenter.svg');
+}

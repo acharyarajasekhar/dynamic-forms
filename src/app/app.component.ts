@@ -14,6 +14,13 @@ export class AppComponent {
   submitted: any;
   formConfig: any;
 
+  tempAddress = {
+    lat: 12.9834958,
+    lng: 77.7694789,
+    title: 'Title',
+    display: 'Address'
+  }
+
   constructor(
     private controlSvc: ControlsService
   ) {

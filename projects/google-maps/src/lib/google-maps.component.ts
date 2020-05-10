@@ -1,8 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-// import { Toastr } from '../toastr.service';
-// import { LaunchNavigatorService } from 'src/app/native/launch-navigator.service';
-// import { GeoLocationService } from 'src/app/native/geo-location.service';
 
 declare var google;
 
@@ -40,10 +37,7 @@ export class GoogleMapsComponent implements OnInit {
   };
 
   constructor(
-    private modalCtrl: ModalController,
-    // private toastr: Toastr,
-    // private geolocation: GeoLocationService,
-    // private navigator: LaunchNavigatorService
+    private modalCtrl: ModalController
   ) { }
 
   ngOnInit() {
@@ -115,7 +109,7 @@ export class GoogleMapsComponent implements OnInit {
 
   openNavigator() {
     if (this.lat && this.lng) {
-      // this.navigator.openNavigator(this.lat, this.lng);
+      window.open(`https://www.google.com/maps/dir/?api=1&destination=${this.lat},${this.lng}`, '_blank');
     }
   }
 

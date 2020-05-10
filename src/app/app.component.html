@@ -1,8 +1,10 @@
 <ion-content>
     <br /><br />
     <div class="container">
-        <dynamic-form #dynamicForm [controls]="controls" [form]="form" [svgIconBasePath]="'assets/assets/imgs/icons/'">
+        <dynamic-form #dynamicForm [controls]="controls" [form]="form" [svgIconBasePath]="'assets/imgs/icons/'">
         </dynamic-form>
         <button (click)="onSave()">Save</button>
+
+        <button [gMaps]="tempAddress">Google Maps</button>
     </div>
 </ion-content>

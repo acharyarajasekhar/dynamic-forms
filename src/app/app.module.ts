@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { DynamicFormsModule } from 'projects/dynamic-forms/src/public-api';
 import { IonicModule } from '@ionic/angular';
+import { GoogleMapsModule } from 'projects/google-maps/src/public-api';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { IonicModule } from '@ionic/angular';
   imports: [
     BrowserModule,
     DynamicFormsModule,
+    GoogleMapsModule,
     IonicModule.forRoot()
   ],
   providers: [],
