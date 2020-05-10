@@ -4,7 +4,7 @@ import { BusyIndicatorService } from '@acharyarajasekhar/busy-indicator';
 import { take } from 'rxjs/operators';
 import * as _ from 'lodash';
 import { ActionSheetController, ModalController } from '@ionic/angular';
-import { GoogleMapsComponent } from 'projects/google-maps/src/public-api';
+import { GoogleMapsComponent } from '@acharyarajasekhar/google-maps';
 
 @Injectable({
   providedIn: 'root'

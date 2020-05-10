@@ -13,6 +13,8 @@
   "dependencies": {
     "@acharyarajasekhar/busy-indicator": "^1.0.1",
     "@acharyarajasekhar/dynamic-dom-injector": "^1.0.0",
+    "@acharyarajasekhar/elastic-textarea": "^1.0.0",
+    "@acharyarajasekhar/google-maps": "^1.0.0",
     "@angular/animations": "~8.2.11",
     "@angular/common": "~8.2.11",
     "@angular/compiler": "~8.2.11",
@@ -24,8 +26,10 @@
     "@ionic/angular": "^5.1.0",
     "bootstrap": "^4.4.1",
     "bootstrap-select": "^1.13.16",
+    "install": "^0.13.0",
     "jquery": "^3.5.0",
     "lodash": "^4.17.15",
+    "npm": "^6.14.5",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

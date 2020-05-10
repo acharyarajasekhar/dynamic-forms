@@ -4,8 +4,8 @@ import { AddressFormControlComponent } from './address-form-control.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BusyIndicatorModule } from '@acharyarajasekhar/busy-indicator';
 import { FormsModule } from '@angular/forms';
-import { ElasticTextareaModule } from 'projects/elastic-textarea/src/public-api';
-import { GoogleMapsModule } from 'projects/google-maps/src/public-api';
+import { ElasticTextareaModule } from '@acharyarajasekhar/elastic-textarea';
+import { GoogleMapsModule } from '@acharyarajasekhar/google-maps';
 
 @NgModule({
   declarations: [
