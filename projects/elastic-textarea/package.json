@@ -1,8 +1,15 @@
 {
-  "name": "elastic-textarea",
-  "version": "0.0.1",
+  "name": "@acharyarajasekhar/elastic-textarea",
+  "version": "1.0.0",
   "peerDependencies": {
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/acharyarajasekhar/dynamic-forms.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
 declare var google;
@@ -10,7 +10,7 @@ declare var google;
 })
 export class GoogleMapsComponent implements OnInit {
 
-  @ViewChild('map', { static: false }) mapElement: ElementRef;
+  @ViewChild('map', { static: false }) mapElement: any;
   private map: any;
   private marker: any;
   private latLong: any;
