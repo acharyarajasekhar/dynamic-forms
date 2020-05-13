@@ -1,4 +1,4 @@
-<div class="input-group mb-2">
+<div class="input-group">
 
     <div class="input-group-prepend">
         <div class="input-group-text" style="width: 50px;">
@@ -16,10 +16,10 @@
         <div class="input-group">
             <div class="input-group mb-3" style="margin-bottom: 0px !important;">
                 <input type="number" class="form-control" [(ngModel)]="pinCode" placeholder="Pin Code">
-                <div class="input-group-append">
-                    <button class="btn btn-dark" type="button" (click)="getPostOfficeList()">
+                <div class="input-group-append" (click)="getPostOfficeList()">
+                    <span class="input-group-text">
                         <ion-icon name="caret-forward-outline"></ion-icon>
-                    </button>
+                    </span>
                 </div>
             </div>
         </div>
@@ -30,18 +30,12 @@
         </div>
 
         <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text">lat</span>
-            </div>
-            <label class="form-control latlng">{{ lat }}</label>
-            <div class="input-group-prepend">
-                <span class="input-group-text">lng</span>
-            </div>
-            <label class="form-control latlng">{{ lng }}</label>
-            <div class="input-group-append">
-                <button class="btn btn-dark" type="button" (click)="getOrSetLocation()">
+            <label
+                class="form-control latlng">{{ (!!lat ? lat : 'latitude') + ',' + (!!lng ? lng : ' longitude') }}</label>
+            <div class="input-group-append" (click)="getOrSetLocation()">
+                <span class="input-group-text">
                     <ion-icon name="location"></ion-icon>
-                </button>
+                </span>
             </div>
         </div>
 

@@ -1,0 +1,26 @@
+<ion-list>
+
+  <ion-toolbar>
+    <ion-title>{{ control.label }}</ion-title>
+  </ion-toolbar>
+
+
+  <ion-radio-group [value]="value" (ionChange)="changeValue($event)">
+
+    <ion-item *ngFor="let o of control.options" lines="none">
+      <ion-label>{{ o }}</ion-label>
+      <ion-radio slot="start" [value]="o"></ion-radio>
+    </ion-item>
+
+  </ion-radio-group>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="clear()">clear</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancel()">Cancel</ion-button>
+      <ion-button color="primary" (click)="ok()">Ok</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-list>

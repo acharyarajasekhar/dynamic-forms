@@ -1,0 +1,21 @@
+<div class="input-group">
+
+    <div class="input-group-prepend">
+        <div class="input-group-text" style="width: 50px;">
+            <ion-icon [src]="iconSource" style="font-size: 24px;"> </ion-icon>
+        </div>
+    </div>
+
+    <div class="vertical-input-group" id="customFormContent">
+
+
+        <div class="input-group">
+            <label class="form-control" style="height: auto;">{{ (!!value && value.length > 0) ? value : control.label }}</label>
+            <div class="input-group-append" (click)="showOptions()">
+                <span class="input-group-text my-drop-down"></span>
+            </div>
+        </div>
+
+    </div>
+
+</div>

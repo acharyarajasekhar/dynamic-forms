@@ -29,9 +29,9 @@ export class PhotosFormControlComponent implements ControlValueAccessor {
       reader.onload = event => {
         this.selectedFiles.push(reader.result);
         this.emitChanges();
-      };      
+      };
     })
-    
+
   }
 
   emitChanges() {

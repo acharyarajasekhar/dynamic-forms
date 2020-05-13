@@ -15,6 +15,8 @@ import { DateRangeTimeControl } from '../controls/daterange.control';
 import { DateControl } from '../controls/date.control';
 import { TimeControl } from '../controls/time.control';
 import { FilesControl } from '../controls/files.control';
+import { RadioListControl } from '../controls/radio-list.control';
+import { CheckboxListControl } from '../controls/checkbox-list.control';
 
 @Injectable({
   providedIn: 'root'
@@ -69,6 +71,10 @@ export class ControlsService {
           return new PhotosControl(options);
         case 'templeTimings':
           return new TempleTimingsControl(options);
+        case 'radiolist':
+          return new RadioListControl(options);
+        case 'checkboxlist':
+          return new CheckboxListControl(options);
         default:
           console.error(`${descriptor.type} is not supported`);
       }

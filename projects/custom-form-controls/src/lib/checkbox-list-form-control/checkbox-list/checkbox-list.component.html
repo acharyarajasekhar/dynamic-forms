@@ -1,0 +1,26 @@
+<ion-list>
+
+    <ion-toolbar>
+        <ion-title>{{ control.label }}</ion-title>
+    </ion-toolbar>
+
+    <ion-item lines="none">
+        <ion-checkbox slot="start" (ionChange)="selectAll($event)"></ion-checkbox>
+        <ion-label>Select All</ion-label>
+    </ion-item>
+
+    <ion-item *ngFor="let entry of list" lines="none">
+        <ion-checkbox slot="start" [checked]="entry.isChecked" (ionChange)="changeValue($event, entry)"></ion-checkbox>
+        <ion-label>{{ entry.val }}</ion-label>
+    </ion-item>
+
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="clear()">clear</ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+            <ion-button color="primary" (click)="ok()">Ok</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-list>
