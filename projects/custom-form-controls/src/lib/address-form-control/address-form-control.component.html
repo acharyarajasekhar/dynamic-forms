@@ -10,12 +10,13 @@
 
         <div class="input-group">
             <textarea type="text" class="form-control" elasticize [(ngModel)]="AddressLine"
-                placeholder="H.No, Street/Area"></textarea>
+                placeholder="H.No, Street/Area" (blur)="onTouched($event)"></textarea>
         </div>
 
         <div class="input-group">
             <div class="input-group mb-3" style="margin-bottom: 0px !important;">
-                <input type="number" class="form-control" [(ngModel)]="pinCode" placeholder="Pin Code">
+                <input type="number" class="form-control" [(ngModel)]="pinCode" (blur)="onTouched($event)"
+                    placeholder="Pin Code">
                 <div class="input-group-append" (click)="getPostOfficeList()">
                     <span class="input-group-text">
                         <ion-icon name="caret-forward-outline"></ion-icon>

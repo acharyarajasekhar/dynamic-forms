@@ -26,3 +26,7 @@
 #customFormContent {
     width: calc(100% - 50px);;
 }
+
+.is-invalid {
+    border: 1px solid red;
+}

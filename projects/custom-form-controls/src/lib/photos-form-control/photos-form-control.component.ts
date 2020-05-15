@@ -1,5 +1,5 @@
-import { Component, OnInit, forwardRef, Input } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Component, forwardRef, Input, ViewChild } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor, NG_VALIDATORS, FormControl } from '@angular/forms';
 import * as _ from 'lodash';
 
 @Component({
@@ -10,9 +10,16 @@ import * as _ from 'lodash';
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => PhotosFormControlComponent),
     multi: true
+  },
+  {
+    provide: NG_VALIDATORS,
+    useExisting: forwardRef(() => PhotosFormControlComponent),
+    multi: true
   }]
 })
 export class PhotosFormControlComponent implements ControlValueAccessor {
+
+  @ViewChild('fileInputElement', { static: true }) fileInputElement: any;
 
   @Input() iconSource: string;
   @Input() control: any = {};
@@ -22,23 +29,30 @@ export class PhotosFormControlComponent implements ControlValueAccessor {
   constructor() { }
 
   onFileChange(event) {
-    this.selectedFiles = [];
-    _.forEach(event.target.files, (file) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = event => {
-        this.selectedFiles.push(reader.result);
-        this.emitChanges();
-      };
-    })
+    if (!!this.fileInputElement.nativeElement.value) {
+      this.selectedFiles = [];
+      _.forEach(event.target.files, (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = event => {
+          this.selectedFiles.push(reader.result);
+          this.emitChanges();
+        };
+      })
+    }
+  }
 
+  clear() {
+    this.selectedFiles = [];
+    this.emitChanges();
   }
 
   emitChanges() {
     this.onChange(this.selectedFiles);
   }
 
-  private onChange = (_: any) => { };
+  onChange = (_: any) => { };
+  onTouched = (_: any) => { };
 
   writeValue(value: any): void {
     if (value != undefined) {
@@ -51,8 +65,31 @@ export class PhotosFormControlComponent implements ControlValueAccessor {
     this.onChange = fn;
   }
 
-  registerOnTouched(): void { }
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
 
   setDisabledState?(): void { }
+
+  validate(control: FormControl) {
+
+    if (!!control.untouched) return;
+
+    if (!!this.control.validators['isRequired']) {
+      if (!!!this.selectedFiles || this.selectedFiles.length === 0) {
+        return { 'isrequired': true }
+      }
+    }
+
+    if (!!this.control.validators['maxAllowed']) {
+      let maxAllowed = this.control.validators['maxAllowed'].value || 1;
+      if (!!this.selectedFiles && this.selectedFiles.length > 0 && this.selectedFiles.length > maxAllowed) {
+        return { 'maxallowed': true }
+      }
+    }
+
+    return (null);
+    
+  }
 
 }

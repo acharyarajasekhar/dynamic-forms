@@ -74,7 +74,8 @@ export const environment = {
         multiple: true,
         accept: ".png, .jpg, .jpeg",
         validators: {
-
+          // isRequired: { message: "Cover Photos are required" },
+          maxAllowed: { value: 3, message: "Maximum 3 photos are allowed to select" },
         }
       },
       {
@@ -118,6 +119,8 @@ export const environment = {
         inputType: 'date',
         icon: "date",
         label: "Select Date",
+        min: '2020-01-01',
+        max: '2020-12-31',
         validators: {
           required: { message: "Date is required" }
         }
@@ -129,6 +132,8 @@ export const environment = {
         inputType: 'time',
         icon: "time",
         label: "Select Time",
+        min: '09:00',
+        max: '18:00',
         validators: {
           required: { message: "Time is required" }
         }
@@ -140,6 +145,8 @@ export const environment = {
         inputType: 'datetime-local',
         icon: "date",
         label: "Select DateTime",
+        min: '2020-01-01T09:00:00',
+        max: '2020-12-31T18:00:00',
         validators: {
           required: { message: "DateTime is required" }
         }
@@ -151,8 +158,11 @@ export const environment = {
         icon: "postoffice",
         label: "Fill Address",
         validators: {
-          required: { message: "Address is required" },
-          address: { message: "Incomplete address details" }
+          required: { message: 'Address is Required'},
+          isAddressLineRequired: { message: "Address Line is required" },
+          addressLineMinLength: { length: 3, message: "Address Line must be at least 3 characters long" },
+          addressLineMaxLength: { length: 250, message: "Address Line cannot be more than 250 characters long" },
+          postalAddressRequired: { message: "Please choose your post office using your pincode" }
         }
       }
     ]

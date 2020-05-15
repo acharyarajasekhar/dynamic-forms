@@ -1,6 +1,6 @@
 import { Component, Input, forwardRef } from '@angular/core';
 import { AddressFormControlService } from './address-form-control.service';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'address-form-control',
@@ -10,11 +10,17 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => AddressFormControlComponent),
     multi: true
+  },
+  {
+    provide: NG_VALIDATORS,
+    useExisting: forwardRef(() => AddressFormControlComponent),
+    multi: true
   }]
 })
 export class AddressFormControlComponent implements ControlValueAccessor {
 
   @Input() iconSource: string;
+  @Input() control: any = {}
 
   lat: number;
   lng: number;
@@ -63,7 +69,8 @@ export class AddressFormControlComponent implements ControlValueAccessor {
     this.onChange(value);
   }
 
-  private onChange = (_: any) => { };
+  onChange = (_: any) => { };
+  onTouched = (_: any) => { };
 
   writeValue(value: any): void {
     if (value != undefined) {
@@ -80,8 +87,46 @@ export class AddressFormControlComponent implements ControlValueAccessor {
     this.onChange = fn;
   }
 
-  registerOnTouched(): void { }
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
 
   setDisabledState?(): void { }
+
+  validate(control: FormControl) {
+
+    if (!!control.untouched) return;
+
+    if (!!this.control.validators['isAddressLineRequired']) {
+      if (!(!!control.value && !!control.value.addressLine)) {
+        return { 'isaddresslinerequired': true }
+      }
+    }
+
+    if (!!this.control.validators['addressLineMinLength']) {
+      let minLength = this.control.validators['addressLineMinLength'].length || 1;
+      if (!!control.value.addressLine && control.value.addressLine.length < minLength) {
+        return { 'addresslineminlength': true }
+      }
+    }
+
+    if (!!this.control.validators['addressLineMaxLength']) {
+      let maxLength = this.control.validators['addressLineMaxLength'].length || 1000;
+      if (!!control.value.addressLine && control.value.addressLine.length > maxLength) {
+        return { 'addresslinemaxlength': true }
+      }
+    }
+
+    if (!!this.control.validators['postalAddressRequired']) {
+      console.log(control.value.officename)
+      if (!(!!control.value && !!control.value.officename)) {
+        console.log(control.value.officename)
+        return { 'postaladdressrequired': true }
+      }
+    }
+
+    return (null);
+
+  }
 
 }
