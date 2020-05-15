@@ -6,70 +6,67 @@
       <div class="form-group">
         <div class="input-group mb-2">
 
-          <ng-container *ngSwitchCase="'textbox'">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
-              </div>
-            </div>
-            <input [type]="control.type" class="form-control"
-              [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
-              [formControlName]="control.name" [id]="control.name" [placeholder]="control.label" ngDefaultControl>
-          </ng-container>
+          <ng-container *ngSwitchCase="'input'">
 
-          <ng-container *ngSwitchCase="'email'">
             <div class="input-group-prepend">
               <div class="input-group-text">
                 <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
               </div>
             </div>
-            <input [type]="control.type" class="form-control" [formControlName]="control.name" [id]="control.name"
-              [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
-              [placeholder]="control.label" ngDefaultControl>
-          </ng-container>
 
-          <ng-container *ngSwitchCase="'currency'">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
-              </div>
-            </div>
-            <input [type]="'number'" class="form-control" [formControlName]="control.name" [id]="control.name"
-              [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
-              [placeholder]="control.label" ngDefaultControl>
-          </ng-container>
 
-          <ng-container *ngSwitchCase="'date'">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
-              </div>
-            </div>
-            <input [type]="'date'" class="form-control" [formControlName]="control.name" [id]="control.name"
-              [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
-              [placeholder]="control.label" min="2018-01-01" max="2018-12-31" ngDefaultControl>
-          </ng-container>
+            <ng-container [ngSwitch]="control.inputType">
 
-          <ng-container *ngSwitchCase="'time'">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
-              </div>
-            </div>
-            <input [type]="'time'" class="form-control" [formControlName]="control.name" [id]="control.name"
-              [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
-              [placeholder]="control.label" min="09:00" max="18:00" ngDefaultControl>
-          </ng-container>
+              <ng-container *ngSwitchCase="'text'">
 
-          <ng-container *ngSwitchCase="'datetime'">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
-              </div>
-            </div>
-            <input [type]="'datetime-local'" class="form-control" [formControlName]="control.name" [id]="control.name"
-              [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
-              [placeholder]="control.label" min="2018-06-07T09:00" max="2018-06-14T18:00" ngDefaultControl>
+                <input [type]="control.inputType" class="form-control"
+                  [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
+                  [formControlName]="control.name" [id]="control.name" [placeholder]="control.label" ngDefaultControl>
+
+              </ng-container>
+
+              <ng-container *ngSwitchCase="'email'">
+
+                <input [type]="control.inputType" class="form-control" [formControlName]="control.name" [id]="control.name"
+                  [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
+                  [placeholder]="control.label" ngDefaultControl>
+
+              </ng-container>
+
+              <ng-container *ngSwitchCase="'number'">
+                
+                <input [type]="control.inputType" class="form-control" [formControlName]="control.name" [id]="control.name"
+                  [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
+                  [placeholder]="control.label" ngDefaultControl>
+
+              </ng-container>
+
+              <ng-container *ngSwitchCase="'date'">
+                
+                <input [type]="control.inputType" class="form-control" [formControlName]="control.name" [id]="control.name"
+                  [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
+                  [placeholder]="control.label" [min]="control.options.min" [max]="control.options.max" ngDefaultControl>
+
+              </ng-container>
+
+              <ng-container *ngSwitchCase="'time'">
+                
+                <input [type]="control.inputType" class="form-control" [formControlName]="control.name" [id]="control.name"
+                  [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
+                  [placeholder]="control.label" [min]="control.options.min" [max]="control.options.max" ngDefaultControl>
+
+              </ng-container>
+
+              <ng-container *ngSwitchCase="'datetime-local'">
+                
+                <input [type]="control.inputType" class="form-control" [formControlName]="control.name" [id]="control.name"
+                  [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
+                  [placeholder]="control.label" [min]="control.options.min" [max]="control.options.max" ngDefaultControl>
+
+              </ng-container>
+
+            </ng-container>
+
           </ng-container>
 
           <ng-container *ngSwitchCase="'textarea'">
@@ -82,36 +79,6 @@
               [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
               [placeholder]="control.label" elasticize ngDefaultControl></textarea>
           </ng-container>
-
-
-          <ng-container *ngSwitchCase="'select'">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
-              </div>
-            </div>
-            <select class="selectpicker custom-select form-control" [multiple]="control.multiple"
-              data-actions-box="true" data-size="4" [formControlName]="control.name" [id]="control.name"
-              [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
-              [title]="control.label" ngDefaultControl>
-              <option *ngFor="let option of control.options" [value]="option">{{option}}</option>
-            </select>
-          </ng-container>
-
-          <!-- <ng-container *ngSwitchCase="'files'">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <ion-icon [src]="">></ion-icon>
-              </div>
-            </div>
-            <div class="custom-file">
-              <input type="file" class="custom-file-input form-control" [multiple]="control.multiple"
-                [accept]="control.accept" [formControlName]="control.name" [id]="control.name"
-                [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
-                ngDefaultControl>
-              <label class="custom-file-label">{{ control.label }}</label>
-            </div>
-          </ng-container> -->
 
           <ng-container *ngSwitchCase="'address'">
             <address-form-control [formControlName]="control.name" [id]="control.name" style="width: 100%;"
@@ -127,14 +94,14 @@
               ngDefaultControl></photos-form-control>
           </ng-container>
 
-          <ng-container *ngSwitchCase="'radiolist'">            
+          <ng-container *ngSwitchCase="'radiolist'">
             <radio-list-form-control [formControlName]="control.name" [id]="control.name" style="width: 100%;"
               [control]="control" [iconSource]="'' + svgIconBasePath + control.icon + '.svg'"
               [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
               ngDefaultControl></radio-list-form-control>
           </ng-container>
 
-          <ng-container *ngSwitchCase="'checkboxlist'">            
+          <ng-container *ngSwitchCase="'checkboxlist'">
             <checkbox-list-form-control [formControlName]="control.name" [id]="control.name" style="width: 100%;"
               [control]="control" [iconSource]="'' + svgIconBasePath + control.icon + '.svg'"
               [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"

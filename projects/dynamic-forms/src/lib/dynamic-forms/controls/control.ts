@@ -1,7 +1,7 @@
 export class ControlDescriptor {
   name: string;
-  type: string;
-  title: string;
+  controlType: string;
+  label: string;
   order: number;
   value: any;
 }

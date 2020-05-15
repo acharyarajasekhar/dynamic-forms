@@ -30,9 +30,11 @@ export class CheckboxListComponent implements OnInit {
 
   selectAll(event, entry) {
     if (!!event && !!event.detail && !!event.detail.value) {
-      if (event.detail.checked) {
-        _.forEach(this.list, l => l.isChecked = true);
-      }
+
+      _.forEach(this.list, (l: any) => {
+        l.isChecked = event.detail.checked;
+      });
+      console.log(this.list);
     }
   }
 
@@ -40,11 +42,6 @@ export class CheckboxListComponent implements OnInit {
     if (!!event && !!event.detail && !!event.detail.value) {
       _.filter(this.list, { val: entry.val })[0].isChecked = event.detail.checked;
     }
-  }
-
-  clear() {
-    this.values = [];
-    this.init();
   }
 
   cancel() {
