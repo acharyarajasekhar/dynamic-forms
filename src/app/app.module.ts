@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { IonicModule } from '@ionic/angular';
 import { GoogleMapsModule } from '@acharyarajasekhar/google-maps';
-import { DynamicFormsModule } from 'projects/dynamic-forms/src/public-api';
+import { DynamicFormsModule } from '@acharyarajasekhar/dynamic-forms';
+import { SampleFormComponent } from './sample-form/sample-form.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SampleFormComponent
   ],
   imports: [
     BrowserModule,
@@ -16,6 +18,7 @@ import { DynamicFormsModule } from 'projects/dynamic-forms/src/public-api';
     GoogleMapsModule,
     IonicModule.forRoot()
   ],
+  entryComponents: [SampleFormComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

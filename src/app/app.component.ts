@@ -1,7 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
-import { ControlBase, ControlsService } from 'projects/dynamic-forms/src/public-api';
-import { FormGroup } from '@angular/forms';
-import { environment } from 'src/environments/environment';
+import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { SampleFormComponent } from './sample-form/sample-form.component';
 
 @Component({
   selector: 'app-root',
@@ -10,49 +9,24 @@ import { environment } from 'src/environments/environment';
 })
 export class AppComponent {
 
-  @ViewChild('dynamicForm', { static: true }) dynamicForm: any;
-
-  controls: ControlBase<any>[];
-  form: FormGroup;
-  submitted: any;
-  formConfig: any;
-
-  tempAddress = {
-    lat: 12.9834958,
-    lng: 77.7694789,
-    title: 'Title',
-    display: 'Address'
-  }
-
   constructor(
-    private controlSvc: ControlsService
-  ) {
-    this.form = new FormGroup({});
-  }
+    private modalController: ModalController
+  ) { }
 
-  ngOnInit() {
-    this.formConfig = environment.sampleFormConfig;
-    if (!!this.formConfig) {
-      this.controls = this.controlSvc.getControls(this.formConfig.controls);
-    }
-    this.form.valueChanges
-      .subscribe(val => {
-        this.submitted = val;
-      });
-  }
+  ngOnInit() { }
 
-  onSave() {
-    console.log(this.submitted);
-    if (this.form.invalid) {      
-      this.dynamicForm.showErrors();
-      let errorMessage = '';
-      for (let c in this.form.controls) {
-        for (let e in this.form.controls[c].errors) {
-          errorMessage += c + " is " + e + ", ";
-        }
+  async openForm() {
+    const modal = await this.modalController.create({
+      component: SampleFormComponent,
+    });
+
+    modal.onDidDismiss().then(result => {
+      if (result.role === 'ok') {
+        console.log(result.data);
       }
-      console.log(errorMessage);
-    }
+    })
+
+    return await modal.present();
   }
 
 }
