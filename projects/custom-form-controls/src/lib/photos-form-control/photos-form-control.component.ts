@@ -80,17 +80,22 @@ export class PhotosFormControlComponent implements ControlValueAccessor {
 
     if (!!control.untouched) return;
 
-    if (!!this.control.validators['isRequired']) {
-      if (!!!this.selectedFiles || this.selectedFiles.length === 0) {
-        return { 'isrequired': true }
-      }
-    }
+    if (!!control.value) {
 
-    if (!!this.control.validators['maxAllowed']) {
-      let maxAllowed = this.control.validators['maxAllowed'].value || 1;
-      if (!!this.selectedFiles && this.selectedFiles.length > 0 && this.selectedFiles.length > maxAllowed) {
-        return { 'maxallowed': true }
+      if (!!this.control.validators['minRequired']) {
+        let minRequired = this.control.validators['minRequired'].count || 1;
+        if (control.value.length < minRequired) {
+          return { 'minrequired': true }
+        }
       }
+
+      if (!!this.control.validators['maxAllowed']) {
+        let maxAllowed = this.control.validators['maxAllowed'].count || 1;
+        if (control.value.length > maxAllowed) {
+          return { 'maxallowed': true }
+        }
+      }
+
     }
 
     return (null);

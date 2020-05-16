@@ -20,9 +20,9 @@
             </label>
         </div>
 
-        <div class="input-group">
+        <div class="input-group" (click)="onTouched($event)">
             <input type="file" #fileInputElement class="custom-file-input form-control" [multiple]="control.multiple"
-                [accept]="control.accept" (change)="onFileChange($event)" (blur)="onTouched($event)"
+                [accept]="control.accept" (change)="onFileChange($event)"
                 [ngClass]="{'is-invalid' : isInvalid, 'is-valid' : isValid }" ngDefaultControl>
             <label class="custom-file-label">{{ control.label }}</label>
         </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ControlBase, ControlsService } from 'projects/dynamic-forms/src/public-api';
 import { FormGroup } from '@angular/forms';
 import { environment } from 'src/environments/environment';
@@ -9,6 +9,8 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  @ViewChild('dynamicForm', { static: true }) dynamicForm: any;
 
   controls: ControlBase<any>[];
   form: FormGroup;
@@ -41,7 +43,8 @@ export class AppComponent {
 
   onSave() {
     console.log(this.submitted);
-    if (this.form.invalid) {
+    if (this.form.invalid) {      
+      this.dynamicForm.showErrors();
       let errorMessage = '';
       for (let c in this.form.controls) {
         for (let e in this.form.controls[c].errors) {

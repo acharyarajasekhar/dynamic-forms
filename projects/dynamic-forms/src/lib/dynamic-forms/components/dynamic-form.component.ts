@@ -15,7 +15,7 @@ export class DynamicFormComponent implements OnInit {
   @Input() form: FormGroup;
   @Output() submit: EventEmitter<any> = new EventEmitter();
 
-  displayErrors: boolean = true;
+  displayErrors: boolean = false;
 
   constructor(
     private controlsService: DynamicControlsService
@@ -34,7 +34,7 @@ export class DynamicFormComponent implements OnInit {
       }
     });
 
-console.log(this.controls);
+    console.log(this.controls);
 
     this.form = this.controlsService.toFormGroup(this.form, this.controls);
   }
@@ -46,12 +46,6 @@ console.log(this.controls);
 
   showErrors() {
     this.displayErrors = true;
-    let errorMessage = '';
-    for (let c in this.form.controls) {
-      for (let e in this.form.controls[c].errors) {
-        errorMessage += c + " is " + e + ", ";
-      }
-    }
   }
 
   onIonChange(event, control) {

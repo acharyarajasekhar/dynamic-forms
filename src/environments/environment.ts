@@ -74,8 +74,9 @@ export const environment = {
         multiple: true,
         accept: ".png, .jpg, .jpeg",
         validators: {
-          isRequired: { message: "Cover Photos are required" },
-          maxAllowed: { value: 3, message: "Maximum 3 photos are allowed to select" },
+          required: { message: "Cover Photos are required" },
+          // minRequired: { count: 1, message: "Minimum 1 photo is required" },
+          maxAllowed: { count: 3, message: "Maximum 3 photos are allowed" },
         }
       },
       {
@@ -109,9 +110,9 @@ export const environment = {
           "Milk"
         ],
         validators: {
-          isRequired: { message: "Please select atleast one option" },
-          minRequired: { count: 2, message: "Minimum 2 options are required to choose" },
-          maxAllowed: { count: 3, message: "Maximum 3 options are allowed to choose" }
+          required: { message: "Please select an option" },
+          // minRequired: { count: 1, message: "Minimum 1 options is required" },
+          maxAllowed: { count: 3, message: "Maximum 3 options are allowed" }
         }
       },
       {
@@ -160,7 +161,7 @@ export const environment = {
         icon: "postoffice",
         label: "Fill Address",
         validators: {
-          required: { message: 'Address is Required'},
+          required: { message: 'Address is Required' },
           isAddressLineRequired: { message: "Address Line is required" },
           addressLineMinLength: { length: 3, message: "Address Line must be at least 3 characters long" },
           addressLineMaxLength: { length: 250, message: "Address Line cannot be more than 250 characters long" },
