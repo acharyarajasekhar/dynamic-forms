@@ -91,6 +91,8 @@
           <ng-container *ngSwitchCase="'address'">
             <address-form-control [formControlName]="control.name" [id]="control.name" style="width: 100%;"
               [iconSource]="'' + svgIconBasePath + control.icon + '.svg'" [control]="control"
+              [isInvalid]="controlRef.invalid && (controlRef.dirty || controlRef.touched)"
+              [isValid]="controlRef.valid && (controlRef.dirty || controlRef.touched)"
               [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
               ngDefaultControl></address-form-control>
           </ng-container>
@@ -98,6 +100,8 @@
           <ng-container *ngSwitchCase="'photos'">
             <photos-form-control [formControlName]="control.name" [id]="control.name" style="width: 100%;"
               [control]="control" [iconSource]="'' + svgIconBasePath + control.icon + '.svg'"
+              [isInvalid]="controlRef.invalid && (controlRef.dirty || controlRef.touched)"
+              [isValid]="controlRef.valid && (controlRef.dirty || controlRef.touched)"
               [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
               ngDefaultControl></photos-form-control>
           </ng-container>
@@ -105,6 +109,8 @@
           <ng-container *ngSwitchCase="'radiolist'">
             <radio-list-form-control [formControlName]="control.name" [id]="control.name" style="width: 100%;"
               [control]="control" [iconSource]="'' + svgIconBasePath + control.icon + '.svg'"
+              [isInvalid]="controlRef.invalid && (controlRef.dirty || controlRef.touched)"
+              [isValid]="controlRef.valid && (controlRef.dirty || controlRef.touched)"
               [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
               ngDefaultControl></radio-list-form-control>
           </ng-container>
@@ -112,6 +118,8 @@
           <ng-container *ngSwitchCase="'checkboxlist'">
             <checkbox-list-form-control [formControlName]="control.name" [id]="control.name" style="width: 100%;"
               [control]="control" [iconSource]="'' + svgIconBasePath + control.icon + '.svg'"
+              [isInvalid]="controlRef.invalid && (controlRef.dirty || controlRef.touched)"
+              [isValid]="controlRef.valid && (controlRef.dirty || controlRef.touched)"
               [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched), 'is-valid' : controlRef.valid}"
               ngDefaultControl></checkbox-list-form-control>
           </ng-container>

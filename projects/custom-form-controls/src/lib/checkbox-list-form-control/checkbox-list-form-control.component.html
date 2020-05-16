@@ -8,11 +8,12 @@
 
     <div class="vertical-input-group" id="customFormContent">
 
-
         <div class="input-group">
-            <label class="form-control" style="height: auto;">{{ (!!value && value.length > 0) ? value : control.label }}</label>
+            <label class="form-control" style="height: auto;"
+                [ngClass]="{'is-invalid' : isInvalid, 'is-valid' : isValid }">{{ (!!value && value.length > 0) ? value : control.label }}</label>
             <div class="input-group-append" (click)="showOptions()">
-                <span class="input-group-text my-drop-down"></span>
+                <span class="input-group-text my-drop-down"
+                    [ngClass]="{'is-invalid' : isInvalid, 'is-valid' : isValid }"></span>
             </div>
         </div>
 

@@ -21,7 +21,9 @@ export class AddressFormControlComponent implements ControlValueAccessor {
 
   @Input() iconSource: string;
   @Input() control: any = {}
-
+  @Input() isInvalid: boolean;
+  @Input() isValid: boolean;
+  
   lat: number;
   lng: number;
   pinCode: number;
@@ -65,7 +67,7 @@ export class AddressFormControlComponent implements ControlValueAccessor {
       lat: this.lat,
       lng: this.lng
     }
-    console.log(value);
+    
     this.onChange(value);
   }
 
@@ -118,10 +120,15 @@ export class AddressFormControlComponent implements ControlValueAccessor {
     }
 
     if (!!this.control.validators['postalAddressRequired']) {
-      console.log(control.value.officename)
       if (!(!!control.value && !!control.value.officename)) {
         console.log(control.value.officename)
         return { 'postaladdressrequired': true }
+      }
+    }
+
+    if (!!this.control.validators['geoLocationRequired']) {
+      if (!(!!control.value && !!control.value.lat)) {
+        return { 'geolocationrequired': true }
       }
     }
 

@@ -11,8 +11,10 @@ export class CheckboxListComponent implements OnInit {
   control: any;
   list: Array<any> = [];
   values: Array<string> = [];
+  isAllSelected: boolean = false;
 
-  constructor(private popoverController: PopoverController) { }
+  constructor(
+    private popoverController: PopoverController) { }
 
   ngOnInit() {
     this.init();
@@ -28,14 +30,16 @@ export class CheckboxListComponent implements OnInit {
     });
   }
 
-  selectAll(event, entry) {
-    if (!!event && !!event.detail && !!event.detail.value) {
+  selectAll() {
+    _.forEach(this.list, (l: any) => {
+      l.isChecked = true
+    });
+  }
 
-      _.forEach(this.list, (l: any) => {
-        l.isChecked = event.detail.checked;
-      });
-      console.log(this.list);
-    }
+  clearAll() {
+    _.forEach(this.list, (l: any) => {
+      l.isChecked = false
+    });
   }
 
   changeValue(event, entry) {

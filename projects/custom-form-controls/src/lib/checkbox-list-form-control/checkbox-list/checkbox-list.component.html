@@ -2,10 +2,18 @@
     <ion-title>{{ control.label }}</ion-title>
 </ion-toolbar>
 
-<ion-item lines="none">
-    <ion-checkbox slot="start" (ionChange)="selectAll($event)"></ion-checkbox>
-    <ion-label>Select All</ion-label>
-</ion-item>
+<ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-button (click)="selectAll()">
+            <ion-icon name="checkmark-done-circle-outline" slot="start"></ion-icon> Select
+        </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+        <ion-button (click)="clearAll()">
+            <ion-icon name="close-circle-outline" slot="start"></ion-icon> Clear
+        </ion-button>
+    </ion-buttons>
+</ion-toolbar>
 
 <ion-item *ngFor="let entry of list" lines="none">
     <ion-checkbox slot="start" [checked]="entry.isChecked" (ionChange)="changeValue($event, entry)"></ion-checkbox>

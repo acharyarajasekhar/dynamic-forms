@@ -17,6 +17,8 @@ export class RadioListFormControlComponent implements ControlValueAccessor {
 
   @Input() iconSource: string;
   @Input() control: any = {};
+  @Input() isInvalid: boolean;
+  @Input() isValid: boolean;
 
   value: any;
 
@@ -24,6 +26,9 @@ export class RadioListFormControlComponent implements ControlValueAccessor {
 
 
   async showOptions() {
+
+    this.onTouched(null);
+    this.emitChanges();
 
     const popover = await this.popoverController.create({
       component: RadioListComponent,
@@ -50,9 +55,10 @@ export class RadioListFormControlComponent implements ControlValueAccessor {
   }
 
   private onChange = (_: any) => { };
+  onTouched = (_: any) => { };
 
   writeValue(value: any): void {
-    if (value != undefined) {
+    if (!!value) {
       this.value = value;
     }
   }
@@ -61,7 +67,9 @@ export class RadioListFormControlComponent implements ControlValueAccessor {
     this.onChange = fn;
   }
 
-  registerOnTouched(): void { }
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
 
   setDisabledState?(): void { }
 

@@ -1,5 +1,5 @@
-import { Component, OnInit, forwardRef, Input } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Component, forwardRef, Input } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor, NG_VALIDATORS, FormControl } from '@angular/forms';
 import { PopoverController } from '@ionic/angular';
 import { CheckboxListComponent } from './checkbox-list/checkbox-list.component';
 
@@ -7,29 +7,40 @@ import { CheckboxListComponent } from './checkbox-list/checkbox-list.component';
   selector: 'checkbox-list-form-control',
   templateUrl: './checkbox-list-form-control.component.html',
   styleUrls: ['./checkbox-list-form-control.component.css'],
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => CheckboxListFormControlComponent),
-    multi: true
-  }]
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => CheckboxListFormControlComponent),
+      multi: true
+    },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(() => CheckboxListFormControlComponent),
+      multi: true
+    }
+  ]
 })
 export class CheckboxListFormControlComponent implements ControlValueAccessor {
 
   @Input() iconSource: string;
   @Input() control: any = {};
+  @Input() isInvalid: boolean;
+  @Input() isValid: boolean;
 
-  value: any;
+  value: any = [];
 
   constructor(private popoverController: PopoverController) { }
 
-
   async showOptions() {
+
+    this.onTouched(null);
+    this.emitChanges();
 
     const popover = await this.popoverController.create({
       component: CheckboxListComponent,
       componentProps: {
         control: this.control,
-        values: this.value || []
+        values: this.value
       },
       translucent: true
     });
@@ -49,10 +60,11 @@ export class CheckboxListFormControlComponent implements ControlValueAccessor {
     this.onChange(this.value);
   }
 
-  private onChange = (_: any) => { };
+  onChange = (_: any) => { };
+  onTouched = (_: any) => { };
 
   writeValue(value: any): void {
-    if (value != undefined) {
+    if (!!value) {
       this.value = value;
     }
   }
@@ -61,8 +73,39 @@ export class CheckboxListFormControlComponent implements ControlValueAccessor {
     this.onChange = fn;
   }
 
-  registerOnTouched(): void { }
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
 
   setDisabledState?(): void { }
+
+  validate(control: FormControl) {
+
+    if (!!control.untouched) return;
+
+    if (!!this.control.validators['isRequired']) {
+
+      if (!!!this.value) return { 'isrequired': true }
+      if (this.value.length === 0) return { 'isrequired': true }
+
+    }
+
+    if (!!this.control.validators['minRequired']) {
+      let minRequired = this.control.validators['minRequired'].count || 1;
+      if (this.value.length < minRequired) {
+        return { 'minrequired': true }
+      }
+    }
+
+    if (!!this.control.validators['maxAllowed']) {
+      let maxAllowed = this.control.validators['maxAllowed'].count || 1;
+      if (this.value.length > maxAllowed) {
+        return { 'maxallowed': true }
+      }
+    }
+
+    return (null);
+
+  }
 
 }

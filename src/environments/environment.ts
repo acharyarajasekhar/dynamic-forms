@@ -74,7 +74,7 @@ export const environment = {
         multiple: true,
         accept: ".png, .jpg, .jpeg",
         validators: {
-          // isRequired: { message: "Cover Photos are required" },
+          isRequired: { message: "Cover Photos are required" },
           maxAllowed: { value: 3, message: "Maximum 3 photos are allowed to select" },
         }
       },
@@ -92,7 +92,7 @@ export const environment = {
           "Milk"
         ],
         validators: {
-
+          required: { message: "Please select an option" }
         }
       },
       {
@@ -109,7 +109,9 @@ export const environment = {
           "Milk"
         ],
         validators: {
-
+          isRequired: { message: "Please select atleast one option" },
+          minRequired: { count: 2, message: "Minimum 2 options are required to choose" },
+          maxAllowed: { count: 3, message: "Maximum 3 options are allowed to choose" }
         }
       },
       {
@@ -162,7 +164,8 @@ export const environment = {
           isAddressLineRequired: { message: "Address Line is required" },
           addressLineMinLength: { length: 3, message: "Address Line must be at least 3 characters long" },
           addressLineMaxLength: { length: 250, message: "Address Line cannot be more than 250 characters long" },
-          postalAddressRequired: { message: "Please choose your post office using your pincode" }
+          postalAddressRequired: { message: "Please choose your post office using your pincode" },
+          geoLocationRequired: { message: "Please choose your geo location on google maps" }
         }
       }
     ]

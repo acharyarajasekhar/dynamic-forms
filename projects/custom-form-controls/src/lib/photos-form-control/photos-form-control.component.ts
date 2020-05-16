@@ -6,16 +6,18 @@ import * as _ from 'lodash';
   selector: 'photos-form-control',
   templateUrl: './photos-form-control.component.html',
   styleUrls: ['./photos-form-control.component.css'],
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => PhotosFormControlComponent),
-    multi: true
-  },
-  {
-    provide: NG_VALIDATORS,
-    useExisting: forwardRef(() => PhotosFormControlComponent),
-    multi: true
-  }]
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => PhotosFormControlComponent),
+      multi: true
+    },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(() => PhotosFormControlComponent),
+      multi: true
+    }
+  ]
 })
 export class PhotosFormControlComponent implements ControlValueAccessor {
 
@@ -25,6 +27,9 @@ export class PhotosFormControlComponent implements ControlValueAccessor {
   @Input() control: any = {};
 
   selectedFiles: Array<any> = [];
+
+  @Input() isInvalid: boolean;
+  @Input() isValid: boolean;
 
   constructor() { }
 
@@ -89,7 +94,7 @@ export class PhotosFormControlComponent implements ControlValueAccessor {
     }
 
     return (null);
-    
+
   }
 
 }

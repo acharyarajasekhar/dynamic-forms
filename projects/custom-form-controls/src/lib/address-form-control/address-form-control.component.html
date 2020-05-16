@@ -6,19 +6,20 @@
         </div>
     </div>
 
-    <div class="vertical-input-group" id="addressFormContent">
+    <div class="vertical-input-group" id="customFormContent">
 
         <div class="input-group">
             <textarea type="text" class="form-control" elasticize [(ngModel)]="AddressLine"
-                placeholder="H.No, Street/Area" (blur)="onTouched($event)"></textarea>
+                placeholder="H.No, Street/Area" (blur)="onTouched($event)"
+                [ngClass]="{'is-invalid' : isInvalid, 'is-valid' : isValid }"></textarea>
         </div>
 
         <div class="input-group">
             <div class="input-group mb-3" style="margin-bottom: 0px !important;">
                 <input type="number" class="form-control" [(ngModel)]="pinCode" (blur)="onTouched($event)"
-                    placeholder="Pin Code">
+                    placeholder="Pin Code" [ngClass]="{'is-invalid' : isInvalid, 'is-valid' : isValid }">
                 <div class="input-group-append" (click)="getPostOfficeList()">
-                    <span class="input-group-text">
+                    <span class="input-group-text" [ngClass]="{'is-invalid' : isInvalid, 'is-valid' : isValid }">
                         <ion-icon name="caret-forward-outline"></ion-icon>
                     </span>
                 </div>
@@ -26,15 +27,15 @@
         </div>
 
         <div class="input-group">
-            <label class="form-control"
-                style="height:  auto;">{{ !!postOfficeDisplay ? postOfficeDisplay : 'Postal Address (Auto Filled)' }}</label>
+            <label class="form-control" style="height:  auto;"
+                [ngClass]="{'is-invalid' : isInvalid, 'is-valid' : isValid }">{{ !!postOfficeDisplay ? postOfficeDisplay : 'Postal Address (Auto Filled)' }}</label>
         </div>
 
         <div class="input-group">
-            <label
-                class="form-control latlng">{{ (!!lat ? lat : 'latitude') + ',' + (!!lng ? lng : ' longitude') }}</label>
+            <label class="form-control latlng"
+                [ngClass]="{'is-invalid' : isInvalid, 'is-valid' : isValid }">{{ (!!lat ? lat : 'latitude') + ',' + (!!lng ? lng : ' longitude') }}</label>
             <div class="input-group-append" (click)="getOrSetLocation()">
-                <span class="input-group-text">
+                <span class="input-group-text" [ngClass]="{'is-invalid' : isInvalid, 'is-valid' : isValid }">
                     <ion-icon name="location"></ion-icon>
                 </span>
             </div>

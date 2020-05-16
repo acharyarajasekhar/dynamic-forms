@@ -2,15 +2,13 @@
     padding-bottom: 0;
 }
 .vertical-input-group .input-group:first-child * {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;    
+    border-radius: 0;  
 }
 .vertical-input-group .input-group:last-child {
     padding-top: 0;
 }
 .vertical-input-group .input-group:last-child * {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+    border-radius: 0;
 }
 .vertical-input-group .input-group:not(:last-child):not(:first-child) {
     padding-top: 0;
@@ -23,7 +21,7 @@
     border-top: 0;
 }
 
-#addressFormContent {
+#customFormContent {
     width: calc(100% - 50px);;
 }
 
@@ -31,4 +29,12 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+}
+
+.is-invalid {
+    border-color: #dc3545;
+}
+
+.is-valid {
+    border-color: #28a745;
 }
