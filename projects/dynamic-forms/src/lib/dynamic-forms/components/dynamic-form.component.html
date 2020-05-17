@@ -44,31 +44,64 @@
 
               <ng-container *ngSwitchCase="'date'">
 
-                <input [type]="control.inputType" class="form-control" [formControlName]="control.name"
-                  [id]="control.name"
-                  [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched || displayErrors), 'is-valid' : controlRef.valid}"
-                  [placeholder]="control.label" [min]="control.options.min" [max]="control.options.max"
-                  ngDefaultControl>
+                <div class="vertical-input-group customFormContent">
+
+                  <div class="input-group">
+                    <label class="form-control customLabel"
+                      [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched || displayErrors), 'is-valid' : controlRef.valid}">{{control.label}}</label>
+                  </div>
+
+                  <div class="input-group">
+                    <input [type]="control.inputType" class="form-control dateControl" [formControlName]="control.name"
+                      [id]="control.name"
+                      [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched || displayErrors), 'is-valid' : controlRef.valid}"
+                      [placeholder]="control.label" [min]="control.options.min" [max]="control.options.max"
+                      ngDefaultControl>
+                  </div>
+
+                </div>
 
               </ng-container>
 
               <ng-container *ngSwitchCase="'time'">
 
-                <input [type]="control.inputType" class="form-control" [formControlName]="control.name"
-                  [id]="control.name"
-                  [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched || displayErrors), 'is-valid' : controlRef.valid}"
-                  [placeholder]="control.label" [min]="control.options.min" [max]="control.options.max"
-                  ngDefaultControl>
+                <div class="vertical-input-group customFormContent">
+
+                  <div class="input-group">
+                    <label class="form-control customLabel"
+                      [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched || displayErrors), 'is-valid' : controlRef.valid}">{{control.label}}</label>
+                  </div>
+
+                  <div class="input-group">
+                    <input [type]="control.inputType" class="form-control dateControl" [formControlName]="control.name"
+                      [id]="control.name"
+                      [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched || displayErrors), 'is-valid' : controlRef.valid}"
+                      [placeholder]="control.label" [min]="control.options.min" [max]="control.options.max"
+                      ngDefaultControl>
+                  </div>
+
+                </div>
 
               </ng-container>
 
               <ng-container *ngSwitchCase="'datetime-local'">
 
-                <input [type]="control.inputType" class="form-control" [formControlName]="control.name"
-                  [id]="control.name"
-                  [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched || displayErrors), 'is-valid' : controlRef.valid}"
-                  [placeholder]="control.label" [min]="control.options.min" [max]="control.options.max"
-                  ngDefaultControl>
+                <div class="vertical-input-group customFormContent">
+
+                  <div class="input-group">
+                    <label class="form-control customLabel"
+                      [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched || displayErrors), 'is-valid' : controlRef.valid}">{{control.label}}</label>
+                  </div>
+
+                  <div class="input-group">
+                    <input [type]="control.inputType" class="form-control dateControl" [formControlName]="control.name"
+                      [id]="control.name"
+                      [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched || displayErrors), 'is-valid' : controlRef.valid}"
+                      [placeholder]="control.label" [min]="control.options.min" [max]="control.options.max"
+                      ngDefaultControl>
+                  </div>
+
+                </div>
 
               </ng-container>
 

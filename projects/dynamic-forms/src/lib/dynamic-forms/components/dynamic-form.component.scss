@@ -12,3 +12,38 @@ ion-icon {
         color: red;
     }
 }
+
+.vertical-input-group .input-group:first-child {
+    padding-bottom: 0;
+}
+.vertical-input-group .input-group:first-child * {
+    border-radius: 0;  
+}
+.vertical-input-group .input-group:last-child {
+    padding-top: 0;
+}
+.vertical-input-group .input-group:last-child * {
+    border-radius: 0;
+}
+.vertical-input-group .input-group:not(:last-child):not(:first-child) {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.vertical-input-group .input-group:not(:last-child):not(:first-child) * {
+    border-radius: 0;
+}  
+.vertical-input-group .input-group:not(:first-child) * {
+    border-top: 0;
+}
+
+.customFormContent {
+    width: calc(100% - 50px);;
+}
+
+.customLabel {
+    height: auto; 
+    font-size: smaller; 
+    background-image: none;
+    background-color: #e9ecef;
+    border-bottom: 0px;
+}

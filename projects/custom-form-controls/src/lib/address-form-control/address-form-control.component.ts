@@ -23,7 +23,7 @@ export class AddressFormControlComponent implements ControlValueAccessor {
   @Input() control: any = {}
   @Input() isInvalid: boolean;
   @Input() isValid: boolean;
-  
+
   lat: number;
   lng: number;
   pinCode: number;
@@ -67,7 +67,7 @@ export class AddressFormControlComponent implements ControlValueAccessor {
       lat: this.lat,
       lng: this.lng
     }
-    
+
     this.onChange(value);
   }
 
@@ -98,6 +98,10 @@ export class AddressFormControlComponent implements ControlValueAccessor {
   validate(control: FormControl) {
 
     if (!!control.untouched) return;
+
+    if (!!this.control.validators['required']) {
+      if (!!!control.value) return { required: true };
+    }
 
     if (!!this.control.validators['isAddressLineRequired']) {
       if (!(!!control.value && !!control.value.addressLine)) {
