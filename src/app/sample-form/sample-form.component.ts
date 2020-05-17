@@ -43,6 +43,10 @@ export class SampleFormComponent implements OnInit {
       });
   }
 
+  cancel() {
+    this.modalController.dismiss();
+  }
+
   onSave() {
     console.log(this.submitted);
     if (this.form.invalid) {

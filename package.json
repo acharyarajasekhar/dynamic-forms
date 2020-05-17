@@ -12,9 +12,9 @@
   "private": true,
   "dependencies": {
     "@acharyarajasekhar/busy-indicator": "^1.0.1",
-    "@acharyarajasekhar/custom-form-controls": "^1.0.2",
+    "@acharyarajasekhar/custom-form-controls": "^1.0.3",
     "@acharyarajasekhar/dynamic-dom-injector": "^1.0.0",
-    "@acharyarajasekhar/dynamic-forms": "^1.0.1",
+    "@acharyarajasekhar/dynamic-forms": "^1.0.2",
     "@acharyarajasekhar/elastic-textarea": "^1.0.0",
     "@acharyarajasekhar/google-maps": "^1.0.1",
     "@angular/animations": "~8.2.11",

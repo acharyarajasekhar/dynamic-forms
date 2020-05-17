@@ -14,6 +14,9 @@
 
 <ion-footer>
     <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+        </ion-buttons>
         <ion-buttons slot="end">
             <ion-button (click)="onSave()">Save</ion-button>
             <ion-button [gMaps]="tempAddress">Google Maps</ion-button>
