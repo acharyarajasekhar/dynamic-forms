@@ -6,6 +6,7 @@ import { PhotosControl } from '../controls/photos.control';
 import { RadioListControl } from '../controls/radio-list.control';
 import { CheckboxListControl } from '../controls/checkbox-list.control';
 import { InputControl } from '../controls/input.control';
+import { ToggleControl } from '../controls/toggle.control';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,8 @@ export class ControlsService {
       switch (descriptor.controlType) {
         case 'input':
           return new InputControl(options);
+        case 'toggle':
+          return new ToggleControl(options);
         case 'textarea':
           return new TextareaControl(options);
         case 'address':

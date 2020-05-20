@@ -2,7 +2,7 @@ import { ControlBase } from './control-base';
 
 export class RadioListControl extends ControlBase<string> {
   
-  options: { key: string, value: string }[] = [];
+  options: { value: string, text: string }[] = [];
 
   constructor(options: {} = {}) {
     super(options);

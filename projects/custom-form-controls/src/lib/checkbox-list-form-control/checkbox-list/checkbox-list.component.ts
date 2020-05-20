@@ -54,7 +54,7 @@ export class CheckboxListComponent implements OnInit {
 
   ok() {
     let temp = _.filter(this.list, { isChecked: true });
-    temp = _.map(temp, 'val');
+    temp = _.map(temp, 'val.value');
     this.popoverController.dismiss(temp, 'ok');
   }
 

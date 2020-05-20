@@ -2,6 +2,7 @@ import { Component, forwardRef, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, NG_VALIDATORS, FormControl } from '@angular/forms';
 import { PopoverController } from '@ionic/angular';
 import { CheckboxListComponent } from './checkbox-list/checkbox-list.component';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'checkbox-list-form-control',
@@ -78,6 +79,20 @@ export class CheckboxListFormControlComponent implements ControlValueAccessor {
   }
 
   setDisabledState?(): void { }
+
+  valueToDisplay(values) {
+    var result = [];
+
+    _.forEach(this.control.options, (o: any) => {
+      _.forEach(values, (v) => {
+        if (o.value === v) {
+          result.push(o.text);
+        }
+      });
+    });
+
+    return result;
+  }
 
   validate(control: FormControl) {
 

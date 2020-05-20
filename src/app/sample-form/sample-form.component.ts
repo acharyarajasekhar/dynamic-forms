@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ControlBase, ControlsService } from '@acharyarajasekhar/dynamic-forms';
+// import { ControlBase, ControlsService } from '@acharyarajasekhar/dynamic-forms';
 import { FormGroup } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
+import { ControlBase, ControlsService } from 'projects/dynamic-forms/src/public-api';
 
 @Component({
   selector: 'app-sample-form',
@@ -32,7 +33,7 @@ export class SampleFormComponent implements OnInit {
     this.form = new FormGroup({});
   }
 
-  ngOnInit() {
+  ngOnInit() {    
     this.formConfig = environment.sampleFormConfig;
     if (!!this.formConfig) {
       this.controls = this.controlSvc.getControls(this.formConfig.controls);

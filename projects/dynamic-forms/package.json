@@ -1,6 +1,6 @@
 {
   "name": "@acharyarajasekhar/dynamic-forms",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "peerDependencies": {
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14",
@@ -9,7 +9,7 @@
     "bootstrap-select": "^1.13.16",
     "@ionic/angular": "^5.1.0",
     "@acharyarajasekhar/busy-indicator": "^1.0.1",
-    "@acharyarajasekhar/custom-form-controls": "^1.0.4",
+    "@acharyarajasekhar/custom-form-controls": "^1.0.5",
     "@acharyarajasekhar/elastic-textarea": "^1.0.0"
   },
   "repository": {

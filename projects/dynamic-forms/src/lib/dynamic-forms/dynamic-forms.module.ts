@@ -5,7 +5,11 @@ import { ControlsService } from './services/controls.service';
 import { DynamicControlsService } from './services/dynamic-controls.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ElasticTextareaModule } from '@acharyarajasekhar/elastic-textarea';
-import { RadioListFormControlModule, CheckboxListFormControlModule, AddressFormControlModule, PhotosFormControlModule } from '@acharyarajasekhar/custom-form-controls';
+import { 
+  RadioListFormControlModule, 
+  CheckboxListFormControlModule, 
+  AddressFormControlModule, 
+  PhotosFormControlModule } from '@acharyarajasekhar/custom-form-controls';
 
 @NgModule({
   imports: [

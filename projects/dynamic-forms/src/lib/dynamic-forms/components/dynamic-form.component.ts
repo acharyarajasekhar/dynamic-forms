@@ -34,8 +34,6 @@ export class DynamicFormComponent implements OnInit {
       }
     });
 
-    console.log(this.controls);
-
     this.form = this.controlsService.toFormGroup(this.form, this.controls);
   }
 

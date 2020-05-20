@@ -10,7 +10,7 @@
 
         <div class="input-group" (click)="showOptions()">
             <label class="form-control" style="height: auto;"
-                [ngClass]="{'is-invalid' : isInvalid, 'is-valid' : isValid }">{{ (!!value && value.length > 0) ? value : control.label }}</label>
+                [ngClass]="{'is-invalid' : isInvalid, 'is-valid' : isValid }">{{ (!!value && value.length > 0) ? valueToDisplay(value) : control.label }}</label>
             <div class="input-group-append">
                 <button class="btn my-drop-down" [ngClass]="{'is-invalid' : isInvalid, 'is-valid' : isValid }"
                     type="button"></button>

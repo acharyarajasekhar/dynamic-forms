@@ -17,7 +17,7 @@
 
 <ion-item *ngFor="let entry of list" lines="none">
     <ion-checkbox slot="start" [checked]="entry.isChecked" (ionChange)="changeValue($event, entry)"></ion-checkbox>
-    <ion-label>{{ entry.val }}</ion-label>
+    <ion-label>{{ entry.val.text }}</ion-label>
 </ion-item>
 
 <ion-toolbar>

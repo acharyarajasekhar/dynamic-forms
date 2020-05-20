@@ -8,8 +8,8 @@
   <ion-radio-group [value]="value" (ionChange)="changeValue($event)">
 
     <ion-item *ngFor="let o of control.options" lines="none">
-      <ion-label>{{ o }}</ion-label>
-      <ion-radio slot="start" [value]="o"></ion-radio>
+      <ion-label>{{ o.text }}</ion-label>
+      <ion-radio slot="start" [value]="o.value"></ion-radio>
     </ion-item>
 
   </ion-radio-group>

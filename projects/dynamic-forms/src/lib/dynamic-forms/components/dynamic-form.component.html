@@ -10,7 +10,7 @@
 
             <div class="input-group-prepend">
               <div class="input-group-text">
-                <ion-icon [src]="svgIconBasePath + control.icon + '.svg'">></ion-icon>
+                <ion-icon [src]="svgIconBasePath + control.icon + '.svg'"></ion-icon>
               </div>
             </div>
 
@@ -40,14 +40,14 @@
                   [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched || displayErrors), 'is-valid' : controlRef.valid}"
                   [placeholder]="control.label" ngDefaultControl>
 
-              </ng-container>
+              </ng-container>              
 
               <ng-container *ngSwitchCase="'date'">
 
                 <div class="vertical-input-group customFormContent">
 
                   <div class="input-group">
-                    <label class="form-control customLabel"
+                    <label for="{{control.name}}" class="form-control customLabel"
                       [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched || displayErrors), 'is-valid' : controlRef.valid}">{{control.label}}</label>
                   </div>
 
@@ -68,7 +68,7 @@
                 <div class="vertical-input-group customFormContent">
 
                   <div class="input-group">
-                    <label class="form-control customLabel"
+                    <label for="{{control.name}}" class="form-control customLabel"
                       [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched || displayErrors), 'is-valid' : controlRef.valid}">{{control.label}}</label>
                   </div>
 
@@ -89,7 +89,7 @@
                 <div class="vertical-input-group customFormContent">
 
                   <div class="input-group">
-                    <label class="form-control customLabel"
+                    <label for="{{control.name}}" class="form-control customLabel"
                       [ngClass]="{'is-invalid' : controlRef.invalid && (controlRef.dirty || controlRef.touched || displayErrors), 'is-valid' : controlRef.valid}">{{control.label}}</label>
                   </div>
 
@@ -106,6 +106,19 @@
               </ng-container>
 
             </ng-container>
+            
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'toggle'">
+
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text" style="width: 50px;">
+                  <input type="checkbox" style="margin: auto;" [formControlName]="control.name" [id]="control.name">
+                </div>
+              </div>
+              <label for="{{control.name}}" class="form-control">{{ control.label }}</label>
+            </div>
 
           </ng-container>
 

@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, forwardRef, Input } from '@
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { PopoverController } from '@ionic/angular';
 import { RadioListComponent } from './radio-list/radio-list.component';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'radio-list-form-control',
@@ -48,6 +49,18 @@ export class RadioListFormControlComponent implements ControlValueAccessor {
 
     return await popover.present();
 
+  }
+
+  valueToDisplay(value) {
+    var result = value;
+
+    _.forEach(this.control.options, (o: any) => {
+      if (o.value === value) {
+        result = o.text;
+      }
+    });
+
+    return result;
   }
 
   emitChanges() {

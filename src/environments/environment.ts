@@ -19,6 +19,15 @@ export const environment = {
       },
       {
         order: 1,
+        name: "isActive",
+        controlType: 'toggle',
+        icon: "avatar",
+        label: "Is Active",
+        value: true,
+        validators: {}
+      },
+      {
+        order: 1,
         name: "description",
         controlType: 'textarea',
         icon: "details",
@@ -86,11 +95,11 @@ export const environment = {
         icon: "supplyfree",
         label: "Choose...",
         options: [
-          "Accommodation",
-          "LPG",
-          "Rice",
-          "Vegetables",
-          "Milk"
+          { value: "_Accommodation", text: "Accommodation" },
+          { value: "_LPG", text: "LPG" },
+          { value: "_Rice", text: "Rice" },
+          { value: "_Vegetables", text: "Vegetables" },
+          { value: "_Milk", text: "Milk" }
         ],
         validators: {
           required: { message: "Please select an option" }
@@ -103,11 +112,11 @@ export const environment = {
         icon: "supplyfree",
         label: "Choose...",
         options: [
-          "Accommodation",
-          "LPG",
-          "Rice",
-          "Vegetables",
-          "Milk"
+          { value: "_Accommodation", text: "Accommodation" },
+          { value: "_LPG", text: "LPG" },
+          { value: "_Rice", text: "Rice" },
+          { value: "_Vegetables", text: "Vegetables" },
+          { value: "_Milk", text: "Milk" }
         ],
         validators: {
           required: { message: "Please select an option" },
