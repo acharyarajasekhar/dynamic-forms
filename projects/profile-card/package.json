@@ -1,0 +1,17 @@
+{
+  "name": "@acharyarajasekhar/profile-card",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@angular/common": "^8.2.14",
+    "@angular/core": "^8.2.14",
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/acharyarajasekhar/dynamic-forms.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}

@@ -42,6 +42,12 @@
       ],
       "google-maps/*": [
         "dist/google-maps/*"
+      ],
+      "profile-card": [
+        "dist/profile-card"
+      ],
+      "profile-card/*": [
+        "dist/profile-card/*"
       ]
     }
   },

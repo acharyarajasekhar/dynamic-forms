@@ -1,0 +1,14 @@
+<div class="card hovercard">
+    <div class="cardheader" [ngStyle]="cardHeaderStyleObject()">
+    </div>
+    <div class="avatar">
+        <img alt="" [src]="avatarUrl">
+    </div>
+    <div class="info">
+        <div class="title">
+            {{ title }}
+        </div>
+        <div class="desc" *ngFor="let subTitle of subTitles">{{ subTitle }}</div>
+    </div>
+    <ng-content></ng-content>
+</div>
