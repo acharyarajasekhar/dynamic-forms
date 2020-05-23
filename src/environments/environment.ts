@@ -76,6 +76,20 @@ export const environment = {
       },
       {
         order: 5,
+        name: "photo",
+        controlType: 'photos',
+        icon: "details",
+        label: "Choose Profile Photo",
+        multiple: false,
+        accept: ".png, .jpg, .jpeg",
+        validators: {
+          required: { message: "Profile Photo is required" },
+          // minRequired: { count: 1, message: "Minimum 1 photo is required" },
+          // maxAllowed: { count: 3, message: "Maximum 3 photos are allowed" },
+        }
+      },
+      {
+        order: 5,
         name: "photos",
         controlType: 'photos',
         icon: "details",

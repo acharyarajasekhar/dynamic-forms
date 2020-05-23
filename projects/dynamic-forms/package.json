@@ -9,7 +9,7 @@
     "bootstrap-select": "^1.13.16",
     "@ionic/angular": "^5.1.0",
     "@acharyarajasekhar/busy-indicator": "^1.0.1",
-    "@acharyarajasekhar/custom-form-controls": "^1.0.5",
+    "@acharyarajasekhar/custom-form-controls": "^1.0.6",
     "@acharyarajasekhar/elastic-textarea": "^1.0.0"
   },
   "repository": {

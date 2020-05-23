@@ -53,17 +53,26 @@ export class PhotosFormControlComponent implements ControlValueAccessor {
   }
 
   emitChanges() {
-    this.onChange(this.selectedFiles);
+    if (this.control.multiple === true) {
+      this.onChange(this.selectedFiles);
+    }
+    else {
+      this.onChange(this.selectedFiles[0]);
+    }
   }
 
   onChange = (_: any) => { };
   onTouched = (_: any) => { };
 
   writeValue(value: any): void {
-    if (value != undefined) {
-      this.selectedFiles = value;
+    if (!!value) {
+      if (this.control.multiple === true) {
+        this.selectedFiles = value;
+      }
+      else {
+        this.selectedFiles = [value];
+      }
     }
-    console.log(this.control)
   }
 
   registerOnChange(fn: any): void {

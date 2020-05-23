@@ -12,6 +12,7 @@ export class ProfileCardComponent implements OnInit {
   @Input() avatarUrl: string = 'https://images.unsplash.com/photo-1508349937151-22b68b72d5b1?ixlib=rb-1.2.1&w=1000&q=80';
   @Input() coverPhotoUrl: string = 'https://images.unsplash.com/photo-1508349937151-22b68b72d5b1?ixlib=rb-1.2.1&w=1000&q=80';
   @Input() coverBgColor: string = "gray";
+  @Input() displayFlat: boolean = false;
 
   constructor() { }
 
@@ -25,12 +26,19 @@ export class ProfileCardComponent implements OnInit {
     else {
       let stl: any = { "background-image": 'none' }
       if (!!this.coverBgColor) {
-        stl = {          
+        stl = {
           "background-color": this.coverBgColor
         }
       }
       return stl;
     }
+  }
+
+  cardBorderStyleObject(): Object {
+    if (!!this.displayFlat) {
+      return { "border-width": '0px', "border-radius": "0px", "margin": "0px" }
+    }
+    return {};
   }
 
 }
