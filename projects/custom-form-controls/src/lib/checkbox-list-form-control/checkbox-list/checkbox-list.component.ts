@@ -14,7 +14,8 @@ export class CheckboxListComponent implements OnInit {
   isAllSelected: boolean = false;
 
   constructor(
-    private popoverController: PopoverController) { }
+    private popoverController: PopoverController
+  ) { }
 
   ngOnInit() {
     this.init();
@@ -25,7 +26,7 @@ export class CheckboxListComponent implements OnInit {
     _.forEach(this.control.options, o => {
       this.list.push({
         val: o,
-        isChecked: this.values.includes(o)
+        isChecked: this.values.includes(o.value)
       });
     });
   }

@@ -2,6 +2,7 @@ import { NgModule, ModuleWithProviders, CUSTOM_ELEMENTS_SCHEMA } from '@angular/
 import { CommonModule } from '@angular/common';
 import { PhotosFormControlComponent } from './photos-form-control.component';
 import { FormsModule } from '@angular/forms';
+import { BusyIndicatorModule } from '@acharyarajasekhar/busy-indicator';
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    BusyIndicatorModule
   ],
   exports: [
     PhotosFormControlComponent

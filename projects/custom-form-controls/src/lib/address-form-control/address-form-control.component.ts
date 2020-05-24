@@ -97,10 +97,8 @@ export class AddressFormControlComponent implements ControlValueAccessor {
 
   validate(control: FormControl) {
 
-    if (!!control.untouched) return;
-
-    if (!!this.control.validators['required']) {
-      if (!!!control.value) return { required: true };
+    if (!!!this.control.validators['required']) {
+      if (!!control.untouched) return;
     }
 
     if (!!this.control.validators['isAddressLineRequired']) {
@@ -125,7 +123,6 @@ export class AddressFormControlComponent implements ControlValueAccessor {
 
     if (!!this.control.validators['postalAddressRequired']) {
       if (!(!!control.value && !!control.value.officename)) {
-        console.log(control.value.officename)
         return { 'postaladdressrequired': true }
       }
     }

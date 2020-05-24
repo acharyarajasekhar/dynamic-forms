@@ -1,6 +1,7 @@
 import { Component, forwardRef, Input, ViewChild } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, NG_VALIDATORS, FormControl } from '@angular/forms';
 import * as _ from 'lodash';
+import { BusyIndicatorService } from '@acharyarajasekhar/busy-indicator';
 
 @Component({
   selector: 'photos-form-control',
@@ -31,23 +32,40 @@ export class PhotosFormControlComponent implements ControlValueAccessor {
   @Input() isInvalid: boolean;
   @Input() isValid: boolean;
 
-  constructor() { }
+  constructor(private busy: BusyIndicatorService) { }
 
   onFileChange(event) {
+
     if (!!this.fileInputElement.nativeElement.value) {
       this.selectedFiles = [];
+      let promises = [];
+
+      this.busy.show();
+
       _.forEach(event.target.files, (file) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = event => {
-          this.selectedFiles.push(reader.result);
-          this.emitChanges();
-        };
+
+        let promise = new Promise((res) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = event => {
+            this.selectedFiles.push(reader.result);
+            this.emitChanges();
+            res();
+          };
+        })
+
+        promises.push(promise);
+
+      })
+
+      Promise.all(promises).then(() => {
+        this.busy.hide();
       })
     }
   }
 
   clear() {
+    this.fileInputElement.nativeElement.value = '';
     this.selectedFiles = [];
     this.emitChanges();
   }
