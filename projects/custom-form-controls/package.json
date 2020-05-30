@@ -11,7 +11,16 @@
     "rxjs": "~6.4.0",
     "@ionic/angular": "^5.1.0",
     "bootstrap": "^4.4.1",
-    "jquery": "^3.5.0"
+    "jquery": "^3.5.0",
+    "@ionic-native/image-picker": "^5.26.0",
+    "@ionic-native/crop": "^5.26.0",
+    "@ionic-native/file": "^5.26.0",
+    "@acharyarajasekhar/ngx-utility-services": "^1.0.3",
+    "@capacitor/core": "^2.1.2",
+    "@acharyarajasekhar/upload-progress-indicator": "^1.0.2",
+    "@ionic-native/core": "^5.26.0",
+    "@angular/fire": "^6.0.0",
+    "firebase": "^7.14.6"
   },
   "repository": {
     "type": "git",

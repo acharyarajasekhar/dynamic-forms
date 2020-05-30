@@ -8,7 +8,16 @@
       "lodash": "lodash",
       "@ionic/angular": "@ionic/angular",
       "@acharyarajasekhar/google-maps": "@acharyarajasekhar/google-maps",
-      "@acharyarajasekhar/elastic-textarea": "@acharyarajasekhar/elastic-textarea"
+      "@acharyarajasekhar/elastic-textarea": "@acharyarajasekhar/elastic-textarea",
+      "@capacitor/core": "@capacitor/core",
+      "@ionic-native/crop": "@ionic-native/crop",
+      "@ionic-native/image-picker": "@ionic-native/image-picker",
+      "@ionic-native/file": "@ionic-native/file",
+      "@acharyarajasekhar/ngx-utility-services": "@acharyarajasekhar/ngx-utility-services",
+      "@acharyarajasekhar/upload-progress-indicator": "@acharyarajasekhar/upload-progress-indicator",
+      "@ionic-native/core": "@ionic-native/core",
+      "@angular/fire": "@angular/fire",
+      "firebase": "firebase"
     }
   }
 }

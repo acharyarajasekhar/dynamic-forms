@@ -20,11 +20,20 @@
             </label>
         </div>
 
-        <div class="input-group" (click)="onTouched($event)">
+        <div class="input-group" (click)="onTouched($event)" *ngIf="currentPlatform === 'browser'">
             <input type="file" #fileInputElement class="custom-file-input form-control" [multiple]="control.multiple"
                 [accept]="control.accept" (change)="onFileChange($event)"
                 [ngClass]="{'is-invalid' : isInvalid, 'is-valid' : isValid }" ngDefaultControl>
             <label class="custom-file-label">{{ control.label }}</label>
+        </div>
+
+        <div class="input-group" (click)="pickImage()" *ngIf="currentPlatform === 'mobile'">
+            <label class="form-control"
+                [ngClass]="{'is-invalid' : isInvalid, 'is-valid' : isValid }">{{ control.label }}</label>
+            <div class="input-group-append">
+                <button class="btn my-drop-down" [ngClass]="{'is-invalid' : isInvalid, 'is-valid' : isValid }"
+                    type="button">Browse</button>
+            </div>
         </div>
 
     </div>

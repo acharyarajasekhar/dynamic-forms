@@ -1,7 +1,8 @@
-import { Component, forwardRef, Input, ViewChild } from '@angular/core';
+import { Component, forwardRef, Input, ViewChildren } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, NG_VALIDATORS, FormControl } from '@angular/forms';
 import * as _ from 'lodash';
-import { BusyIndicatorService } from '@acharyarajasekhar/busy-indicator';
+import { Platform } from '@ionic/angular';
+import { PhotosFormControlService } from './photos-form-control.service';
 
 @Component({
   selector: 'photos-form-control',
@@ -22,7 +23,7 @@ import { BusyIndicatorService } from '@acharyarajasekhar/busy-indicator';
 })
 export class PhotosFormControlComponent implements ControlValueAccessor {
 
-  @ViewChild('fileInputElement', { static: true }) fileInputElement: any;
+  @ViewChildren('fileInputElement') fileInputElement: any;
 
   @Input() iconSource: string;
   @Input() control: any = {};
@@ -32,40 +33,53 @@ export class PhotosFormControlComponent implements ControlValueAccessor {
   @Input() isInvalid: boolean;
   @Input() isValid: boolean;
 
-  constructor(private busy: BusyIndicatorService) { }
+  currentPlatform: string = 'browser';
+
+  constructor(
+    private platform: Platform,
+    private photosFormControlService: PhotosFormControlService
+  ) {
+
+    if (this.platform.is('ios') || this.platform.is('android')) {
+      this.currentPlatform = 'mobile';
+    }
+    else {
+      this.currentPlatform = 'browser';
+    }
+
+  }
 
   onFileChange(event) {
 
-    if (!!this.fileInputElement.nativeElement.value) {
+    if (!!this.fileInputElement.first.nativeElement.value) {
       this.selectedFiles = [];
-      let promises = [];
-
-      this.busy.show();
-
-      _.forEach(event.target.files, (file) => {
-
-        let promise = new Promise((res) => {
-          const reader = new FileReader();
-          reader.readAsDataURL(file);
-          reader.onload = event => {
-            this.selectedFiles.push(reader.result);
-            this.emitChanges();
-            res();
-          };
-        })
-
-        promises.push(promise);
-
-      })
-
-      Promise.all(promises).then(() => {
-        this.busy.hide();
+      this.photosFormControlService.handleImageSelection(event).then((files: []) => {
+        this.selectedFiles = files;
       })
     }
+
+  }
+
+  async pickImage() {
+
+    this.selectedFiles = [];
+
+    let maxAllowed = 1;
+
+    if (!!this.control.validators['maxAllowed']) {
+      maxAllowed = this.control.validators['maxAllowed'].count || 1;
+    }
+
+    this.photosFormControlService.selectPhoto(maxAllowed, false).then((files: []) => {
+      this.selectedFiles = files;
+    });
+
   }
 
   clear() {
-    this.fileInputElement.nativeElement.value = '';
+    if (!!this.fileInputElement && !!this.fileInputElement.first) {
+      this.fileInputElement.first.nativeElement.value = '';
+    }
     this.selectedFiles = [];
     this.emitChanges();
   }

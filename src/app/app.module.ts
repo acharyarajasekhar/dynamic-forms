@@ -8,6 +8,9 @@ import { SampleFormComponent } from './sample-form/sample-form.component';
 import { DynamicFormsModule } from 'projects/dynamic-forms/src/public-api';
 import { SampleProfileComponent } from './sample-profile/sample-profile.component';
 import { ProfileCardModule } from 'projects/profile-card/src/public-api';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { Crop } from '@ionic-native/crop/ngx';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,11 @@ import { ProfileCardModule } from 'projects/profile-card/src/public-api';
     IonicModule.forRoot()
   ],
   entryComponents: [SampleFormComponent,SampleProfileComponent],
-  providers: [],
+  providers: [
+    File,
+    ImagePicker,
+    Crop
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
