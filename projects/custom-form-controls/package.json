@@ -1,6 +1,6 @@
 {
   "name": "@acharyarajasekhar/custom-form-controls",
-  "version": "1.0.10",
+  "version": "1.0.19",
   "peerDependencies": {
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14",

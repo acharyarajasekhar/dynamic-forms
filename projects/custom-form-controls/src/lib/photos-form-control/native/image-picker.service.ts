@@ -4,6 +4,7 @@ import { BusyIndicatorService } from '@acharyarajasekhar/busy-indicator';
 import { ToastService } from '@acharyarajasekhar/ngx-utility-services';
 import { FileService } from './file.service';
 import { ImageCropService } from './image-crop.service';
+import * as _ from 'lodash';
 
 @Injectable({
     providedIn: 'root'
@@ -27,34 +28,61 @@ export class ImagePickerService {
     public async pick(noOfImages: number = 1, cropRequired: boolean = false): Promise<string[]> {
 
         try {
-            let permissionResult = await this.imagePicker.hasReadPermission();
-            if (!permissionResult) {
-                await this.imagePicker.requestReadPermission();
-            }
 
-            this.options.maximumImagesCount = noOfImages;
+            let images = [];
+            const hasPermission = await this.imagePicker.hasReadPermission();
+            if (!hasPermission) await this.imagePicker.requestReadPermission();
 
-            let imageUrls: string[] = await this.imagePicker.getPictures(this.options);
-            if (!!imageUrls && imageUrls.length > 0) {
-                let images: string[] = [];
-                for (let i = 0; i < imageUrls.length; i++) {
-                    let imageUrl = imageUrls[i];
-                    if (!!imageUrl && (!!cropRequired || noOfImages === 1)) {
-                        imageUrl = await this.cropSvc.cropImage(imageUrl);
-                        if (!!imageUrl) imageUrl = imageUrl.split('?')[0]
+            try {
+
+                const hasPermission = await this.imagePicker.hasReadPermission();
+
+                if (!!hasPermission) {
+
+                    this.options.maximumImagesCount = noOfImages;
+                    const imageUrls = await this.imagePicker.getPictures(this.options);
+                    console.log(imageUrls);
+                    this.busy.show();
+
+                    try {
+                        if (!!imageUrls && imageUrls.length > 0) {
+
+                            let images: string[] = [];
+                            for (let i = 0; i < imageUrls.length; i++) {
+                                let imageUrl = imageUrls[i];
+                                if (!!imageUrl && (!!cropRequired || noOfImages === 1)) {
+                                    imageUrl = await this.cropSvc.cropImage(imageUrl);
+                                    if (!!imageUrl) imageUrl = imageUrl.split('?')[0]
+                                }
+                                let base64 = await this.fileSvc.readAsDataURL(imageUrl);
+                                console.log(base64);
+                                if (!!base64) images.push(base64);
+                            }
+
+                            this.busy.hide();
+                            console.log(images);
+                            return images;
+                        }
                     }
-                    let base64 = await this.fileSvc.readAsDataURL(imageUrl);
-                    if (!!base64) images.push(base64);
+                    catch (err) {
+                        let e = { message: "Error while reading images: " + JSON.stringify(err) }
+                        this.toast.error(e);
+                    }
                 }
-                return images;
+            }
+            catch (err) {
+                let e = { message: "Error while selecting images: " + JSON.stringify(err) }
+                this.toast.error(e);
             }
         }
         catch (err) {
-            let e = { message: "Error in image picker: " + JSON.stringify(err) }
+            let e = { message: "Error while checking imagepicker permission: " + JSON.stringify(err) }
             this.toast.error(e);
-            this.busy.hide();
-            return [];
         }
-        
+
+        this.busy.hide();
+        console.log('empty files');
+        return [];
+
     }
 }
