@@ -47,6 +47,8 @@ export class PhotosFormControlComponent implements ControlValueAccessor {
       this.currentPlatform = 'browser';
     }
 
+    console.log(this.currentPlatform);
+
   }
 
   onFileChange(event) {
@@ -72,6 +74,7 @@ export class PhotosFormControlComponent implements ControlValueAccessor {
 
     this.photosFormControlService.selectPhoto(maxAllowed, false).then((files: []) => {
       this.selectedFiles = files;
+      this.emitChanges();
     });
 
   }

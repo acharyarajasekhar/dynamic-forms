@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { IonicModule } from '@ionic/angular';
 import { GoogleMapsModule } from '@acharyarajasekhar/google-maps';
 import { SampleFormComponent } from './sample-form/sample-form.component';
-import { DynamicFormsModule } from 'projects/dynamic-forms/src/public-api';
+import { DynamicFormsModule } from '@acharyarajasekhar/dynamic-forms';
 import { SampleProfileComponent } from './sample-profile/sample-profile.component';
 import { ProfileCardModule } from 'projects/profile-card/src/public-api';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
