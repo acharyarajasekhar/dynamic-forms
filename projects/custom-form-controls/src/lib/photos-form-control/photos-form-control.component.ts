@@ -33,7 +33,7 @@ export class PhotosFormControlComponent implements ControlValueAccessor {
   @Input() isInvalid: boolean;
   @Input() isValid: boolean;
 
-  currentPlatform: string = 'browser';
+  isMobile: boolean = false;
 
   constructor(
     private platform: Platform,
@@ -41,13 +41,10 @@ export class PhotosFormControlComponent implements ControlValueAccessor {
   ) {
 
     if (this.platform.is('ios') || this.platform.is('android')) {
-      this.currentPlatform = 'mobile';
-    }
-    else {
-      this.currentPlatform = 'browser';
+      this.isMobile = true;
     }
 
-    console.log(this.currentPlatform);
+    console.log(this.isMobile);
 
   }
 
@@ -57,6 +54,7 @@ export class PhotosFormControlComponent implements ControlValueAccessor {
       this.selectedFiles = [];
       this.photosFormControlService.handleImageSelection(event).then((files: []) => {
         this.selectedFiles = files;
+        this.emitChanges();
       })
     }
 
@@ -64,8 +62,8 @@ export class PhotosFormControlComponent implements ControlValueAccessor {
 
   async pickImage() {
 
+    this.onTouched(null);
     this.selectedFiles = [];
-
     let maxAllowed = 1;
 
     if (!!this.control.validators['maxAllowed']) {

@@ -9,7 +9,7 @@ import {
   RadioListFormControlModule, 
   CheckboxListFormControlModule, 
   AddressFormControlModule, 
-  PhotosFormControlModule } from '@acharyarajasekhar/custom-form-controls';
+  PhotosFormControlModule } from 'projects/custom-form-controls/src/public-api';
 
 @NgModule({
   imports: [
