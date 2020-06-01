@@ -3,6 +3,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor, NG_VALIDATORS, FormControl } f
 import * as _ from 'lodash';
 import { Platform } from '@ionic/angular';
 import { PhotosFormControlService } from './photos-form-control.service';
+import { ToastService } from '@acharyarajasekhar/ngx-utility-services';
 
 @Component({
   selector: 'photos-form-control',
@@ -37,14 +38,13 @@ export class PhotosFormControlComponent implements ControlValueAccessor {
 
   constructor(
     private platform: Platform,
-    private photosFormControlService: PhotosFormControlService
+    private photosFormControlService: PhotosFormControlService,
+    private toast: ToastService
   ) {
 
     if (this.platform.is('ios') || this.platform.is('android')) {
       this.isMobile = true;
     }
-
-    console.log(this.isMobile);
 
   }
 
@@ -70,10 +70,12 @@ export class PhotosFormControlComponent implements ControlValueAccessor {
       maxAllowed = this.control.validators['maxAllowed'].count || 1;
     }
 
-    this.photosFormControlService.selectPhoto(maxAllowed, false).then((files: []) => {
+    this.photosFormControlService.selectPhoto(maxAllowed).then((files: []) => {
       this.selectedFiles = files;
       this.emitChanges();
-    });
+    }).catch(err => {
+      this.toast.error(err);
+    })
 
   }
 

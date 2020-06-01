@@ -20,18 +20,21 @@ export class ProfileCardComponent implements OnInit {
   }
 
   cardHeaderStyleObject(): Object {
+
+    let stl: any = {
+      "background-image": 'none',
+      "background-color": !!this.coverBgColor ? this.coverBgColor : "#fff"
+    }
+
     if (!!this.coverPhotoUrl) {
-      return { "background-image": `url(${this.coverPhotoUrl})` }
-    }
-    else {
-      let stl: any = { "background-image": 'none' }
-      if (!!this.coverBgColor) {
-        stl = {
-          "background-color": this.coverBgColor
-        }
+      stl = {
+        ...stl,
+        "background-image": `url(${this.coverPhotoUrl})`
       }
-      return stl;
     }
+
+    return stl;
+
   }
 
   cardBorderStyleObject(): Object {

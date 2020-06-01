@@ -48,7 +48,6 @@ export class GoogleMapsComponent implements OnInit {
   }
 
   initMap() {
-    console.log(this.lat);
 
     this.latLong = new google.maps.LatLng(this.lat, this.lng);
 

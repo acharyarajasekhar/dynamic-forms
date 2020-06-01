@@ -5,12 +5,12 @@ import { AppComponent } from './app.component';
 import { IonicModule } from '@ionic/angular';
 import { GoogleMapsModule } from '@acharyarajasekhar/google-maps';
 import { SampleFormComponent } from './sample-form/sample-form.component';
-import { DynamicFormsModule } from 'projects/dynamic-forms/src/public-api';
+import { DynamicFormsModule } from '@acharyarajasekhar/dynamic-forms';
 import { SampleProfileComponent } from './sample-profile/sample-profile.component';
 import { ProfileCardModule } from 'projects/profile-card/src/public-api';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
-import { File } from '@ionic-native/file/ngx';
-import { Crop } from '@ionic-native/crop/ngx';
+// import { File } from '@ionic-native/file/ngx';
+// import { Crop } from '@ionic-native/crop/ngx';
 
 @NgModule({
   declarations: [
@@ -27,9 +27,9 @@ import { Crop } from '@ionic-native/crop/ngx';
   ],
   entryComponents: [SampleFormComponent,SampleProfileComponent],
   providers: [
-    File,
+    // File,
     ImagePicker,
-    Crop
+    // Crop
   ],
   bootstrap: [AppComponent]
 })

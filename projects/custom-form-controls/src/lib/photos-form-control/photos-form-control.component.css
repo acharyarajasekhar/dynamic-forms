@@ -26,14 +26,14 @@
 }
 
 .is-invalid {
-    border-color: #dc3545;
+    border-color: #dc3545 !important;
 }
 
 .is-valid {
-    border-color: #28a745;
+    border-color: #28a745 !important;
 }
 
-.my-drop-down{
+.my-button {
     background-color: #e9ecef;
     border: 1px solid #ced4da;
 }

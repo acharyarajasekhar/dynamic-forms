@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
-import { ControlBase, ControlsService } from 'projects/dynamic-forms/src/public-api';
+import { ControlBase, ControlsService } from '@acharyarajasekhar/dynamic-forms';
 
 @Component({
   selector: 'app-sample-form',

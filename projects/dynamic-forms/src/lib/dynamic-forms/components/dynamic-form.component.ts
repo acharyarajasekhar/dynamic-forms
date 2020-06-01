@@ -38,19 +38,11 @@ export class DynamicFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value);
-    this.submit.next(this.form.value);
+    let data = JSON.parse(JSON.stringify(this.form.value));
+    this.submit.next(data);
   }
 
   showErrors() {
     this.displayErrors = true;
   }
-
-  onIonChange(event, control) {
-    console.log(event);
-    if (event && event.detail && event.detail.value) {
-      //control.value = event.detail.value;
-    }
-  }
-
 }

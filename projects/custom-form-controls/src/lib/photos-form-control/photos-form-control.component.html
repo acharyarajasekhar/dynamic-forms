@@ -22,10 +22,10 @@
 
         <ng-container *ngIf="!!isMobile; else browserBlock">
             <div class="input-group" (click)="pickImage()">
-                <label class="form-control"
+                <label class="form-control" style="height: auto;"
                     [ngClass]="{'is-invalid' : isInvalid, 'is-valid' : isValid }">{{ control.label }}</label>
                 <div class="input-group-append">
-                    <button class="btn my-drop-down" [ngClass]="{'is-invalid' : isInvalid, 'is-valid' : isValid }"
+                    <button class="btn my-button" [ngClass]="{'is-invalid' : isInvalid, 'is-valid' : isValid }"
                         type="button">Browse</button>
                 </div>
             </div>

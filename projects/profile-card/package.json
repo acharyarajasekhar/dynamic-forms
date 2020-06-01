@@ -1,6 +1,6 @@
 {
   "name": "@acharyarajasekhar/profile-card",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "peerDependencies": {
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14",

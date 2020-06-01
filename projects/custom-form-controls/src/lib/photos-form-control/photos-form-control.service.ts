@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BusyIndicatorService } from '@acharyarajasekhar/busy-indicator';
 import * as _ from 'lodash';
-import { ImagePickerService } from './native/image-picker.service';
+import { NativeImagePickerService } from '@acharyarajasekhar/ion-native-services';
 
 @Injectable({
     providedIn: 'root'
@@ -10,13 +10,11 @@ export class PhotosFormControlService {
 
     constructor(
         private busy: BusyIndicatorService,
-        private imagePickerService: ImagePickerService
+        private nativeImagePickerService: NativeImagePickerService
     ) { }
 
-    async selectPhoto(noOfImages: number = 1, cropRequired: boolean = false): Promise<any> {
-
-        return this.imagePickerService.pick(noOfImages, cropRequired);
-
+    async selectPhoto(noOfImages: number = 1): Promise<any> {
+        return this.nativeImagePickerService.pick(noOfImages);
     }
 
     handleImageSelection(event) {

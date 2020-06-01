@@ -1,6 +1,7 @@
 import { Directive, OnInit, HostListener, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { GoogleMapsComponent } from './google-maps.component';
+import { ToastService } from '@acharyarajasekhar/ngx-utility-services';
 
 @Directive({
     selector: '[gMaps]'
@@ -10,7 +11,8 @@ export class GoogleMapsDirective implements OnInit {
     @Input('gMaps') address: any;
 
     constructor(
-        private modalCtrl: ModalController
+        private modalCtrl: ModalController,
+        private toast: ToastService
     ) { }
 
     ngOnInit() { }
@@ -30,6 +32,9 @@ export class GoogleMapsDirective implements OnInit {
                 }
             });
             await modal.present();
+        }
+        else {
+            this.toast.show("Geolocation is not set...")
         }
     }
 }
