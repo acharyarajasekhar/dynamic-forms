@@ -1,11 +1,13 @@
 {
   "name": "@acharyarajasekhar/profile-card",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "peerDependencies": {
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14",
     "bootstrap": "^4.4.1",
-    "jquery": "^3.5.0"
+    "jquery": "^3.5.0",
+    "@acharyarajasekhar/ngx-utility-services": "^1.0.3",
+    "@ionic-native/photo-viewer": "^5.26.0"
   },
   "repository": {
     "type": "git",

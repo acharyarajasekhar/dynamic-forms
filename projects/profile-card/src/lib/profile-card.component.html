@@ -1,8 +1,8 @@
 <div class="card hovercard" [ngStyle]="cardBorderStyleObject()">
-    <div class="cardheader" [ngStyle]="cardHeaderStyleObject()">
+    <div class="cardheader" [ngStyle]="cardHeaderStyleObject()" [zoomable]="coverPhotoUrl">
     </div>
     <div class="avatar">
-        <img alt="" [src]="avatarUrl">
+        <img alt="" [src]="avatarUrl" [zoomable]="avatarUrl">
     </div>
     <div class="info">
         <div class="title">
