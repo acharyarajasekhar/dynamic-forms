@@ -1,3 +1,4 @@
+
 export const environment = {
   production: true,
   sampleFormConfig: {
@@ -15,6 +16,15 @@ export const environment = {
           maxLength: { length: 50, message: "Full Name cannot be more than 50 characters long" },
           pattern: { regEx: "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$", message: 'Full Name must contain only letters' }
         }
+      },
+      {
+        order: 1,
+        name: "isActive",
+        controlType: 'toggle',
+        icon: "avatar",
+        label: "Is Active",
+        value: true,
+        validators: {}
       },
       {
         order: 1,
@@ -66,12 +76,28 @@ export const environment = {
       },
       {
         order: 5,
+        name: "photo",
+        controlType: 'photos',
+        icon: "details",
+        label: "Choose Profile Photo",
+        multiple: false,
+        accept: ".png, .jpg, .jpeg",
+        cropRequired: true,
+        validators: {
+          required: { message: "Profile Photo is required" },
+          // minRequired: { count: 1, message: "Minimum 1 photo is required" },
+          // maxAllowed: { count: 3, message: "Maximum 3 photos are allowed" },
+        }
+      },
+      {
+        order: 5,
         name: "photos",
         controlType: 'photos',
         icon: "details",
         label: "Choose Cover Photos",
         multiple: true,
-        accept: ".png, .jpg, .jpeg",
+        accept: ".png, .jpg, .jpeg",        
+        cropRequired: false,
         validators: {
           required: { message: "Cover Photos are required" },
           // minRequired: { count: 1, message: "Minimum 1 photo is required" },
@@ -85,11 +111,11 @@ export const environment = {
         icon: "supplyfree",
         label: "Choose...",
         options: [
-          "Accommodation",
-          "LPG",
-          "Rice",
-          "Vegetables",
-          "Milk"
+          { value: "_Accommodation", text: "Accommodation" },
+          { value: "_LPG", text: "LPG" },
+          { value: "_Rice", text: "Rice" },
+          { value: "_Vegetables", text: "Vegetables" },
+          { value: "_Milk", text: "Milk" }
         ],
         validators: {
           required: { message: "Please select an option" }
@@ -102,11 +128,11 @@ export const environment = {
         icon: "supplyfree",
         label: "Choose...",
         options: [
-          "Accommodation",
-          "LPG",
-          "Rice",
-          "Vegetables",
-          "Milk"
+          { value: "_Accommodation", text: "Accommodation" },
+          { value: "_LPG", text: "LPG" },
+          { value: "_Rice", text: "Rice" },
+          { value: "_Vegetables", text: "Vegetables" },
+          { value: "_Milk", text: "Milk" }
         ],
         validators: {
           required: { message: "Please select an option" },

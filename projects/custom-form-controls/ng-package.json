@@ -21,7 +21,8 @@
       "@ionic-native/core": "@ionic-native/core",
       "@angular/fire": "@angular/fire",
       "firebase": "firebase",
-      "@acharyarajasekhar/ion-native-services": "@acharyarajasekhar/ion-native-services"
+      "@acharyarajasekhar/ion-native-services": "@acharyarajasekhar/ion-native-services",
+      "@acharyarajasekhar/ngx-image-cropper": "@acharyarajasekhar/ngx-image-cropper"
     }
   }
 }

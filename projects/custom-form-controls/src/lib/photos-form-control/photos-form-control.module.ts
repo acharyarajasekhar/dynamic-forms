@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PhotosFormControlComponent } from './photos-form-control.component';
 import { FormsModule } from '@angular/forms';
 import { BusyIndicatorModule } from '@acharyarajasekhar/busy-indicator';
+import { NgxImageCropperModule } from '@acharyarajasekhar/ngx-image-cropper';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { BusyIndicatorModule } from '@acharyarajasekhar/busy-indicator';
   imports: [
     CommonModule,
     FormsModule,
-    BusyIndicatorModule
+    BusyIndicatorModule,
+    NgxImageCropperModule
   ],
   exports: [
     PhotosFormControlComponent

@@ -82,6 +82,7 @@ export const environment = {
         label: "Choose Profile Photo",
         multiple: false,
         accept: ".png, .jpg, .jpeg",
+        cropRequired: true,
         validators: {
           required: { message: "Profile Photo is required" },
           // minRequired: { count: 1, message: "Minimum 1 photo is required" },
@@ -95,7 +96,8 @@ export const environment = {
         icon: "details",
         label: "Choose Cover Photos",
         multiple: true,
-        accept: ".png, .jpg, .jpeg",
+        accept: ".png, .jpg, .jpeg",        
+        cropRequired: false,
         validators: {
           required: { message: "Cover Photos are required" },
           // minRequired: { count: 1, message: "Minimum 1 photo is required" },

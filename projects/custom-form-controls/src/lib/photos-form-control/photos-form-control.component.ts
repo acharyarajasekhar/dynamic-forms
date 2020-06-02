@@ -4,6 +4,7 @@ import * as _ from 'lodash';
 import { Platform } from '@ionic/angular';
 import { PhotosFormControlService } from './photos-form-control.service';
 import { ToastService } from '@acharyarajasekhar/ngx-utility-services';
+import { NgxImageCropperService } from '@acharyarajasekhar/ngx-image-cropper';
 
 @Component({
   selector: 'photos-form-control',
@@ -39,7 +40,8 @@ export class PhotosFormControlComponent implements ControlValueAccessor {
   constructor(
     private platform: Platform,
     private photosFormControlService: PhotosFormControlService,
-    private toast: ToastService
+    private toast: ToastService,
+    private ngxImageCropService: NgxImageCropperService
   ) {
 
     if (this.platform.is('ios') || this.platform.is('android')) {
@@ -55,9 +57,20 @@ export class PhotosFormControlComponent implements ControlValueAccessor {
       this.photosFormControlService.handleImageSelection(event).then((files: []) => {
         this.selectedFiles = files;
         this.emitChanges();
+
+        if (!!this.control.cropRequired && !!!this.control.multiple && this.selectedFiles.length > 0) {
+          this.cropThisImage(0);
+        }
       })
     }
 
+  }
+
+  cropThisImage(imageIndex: number) {
+    this.ngxImageCropService.crop(this.selectedFiles[imageIndex]).then((croppedImage) => {
+      this.selectedFiles[imageIndex] = croppedImage;
+      this.emitChanges();
+    });
   }
 
   async pickImage() {
@@ -73,6 +86,10 @@ export class PhotosFormControlComponent implements ControlValueAccessor {
     this.photosFormControlService.selectPhoto(maxAllowed).then((files: []) => {
       this.selectedFiles = files;
       this.emitChanges();
+
+      if (!!this.control.cropRequired && !!!this.control.multiple && this.selectedFiles.length > 0) {
+        this.cropThisImage(0);
+      }
     }).catch(err => {
       this.toast.error(err);
     })

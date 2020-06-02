@@ -16,7 +16,7 @@
                         &times;
                     </span>
                 </div>
-                <img [src]="item" class="img-thumbnail" *ngFor="let item of selectedFiles" width="100" height="100">
+                <img [src]="item" class="img-thumbnail" *ngFor="let item of selectedFiles; let i = index" (click)="cropThisImage(i)" width="100" height="100">
             </label>
         </div>
 
