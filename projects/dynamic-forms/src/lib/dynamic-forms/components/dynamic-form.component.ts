@@ -37,8 +37,17 @@ export class DynamicFormComponent implements OnInit {
     this.form = this.controlsService.toFormGroup(this.form, this.controls);
   }
 
+  private handleUndefined = (obj) => {
+    Object.keys(obj).forEach(key => {
+      if (obj[key] && typeof obj[key] === 'object') this.handleUndefined(obj[key]);
+      else if (obj[key] === undefined) obj[key] = null;
+    });
+    return obj;
+  };
+
   onSubmit() {
-    let data = JSON.parse(JSON.stringify(this.form.value));
+    let data = Object.assign({}, this.form.value);
+    this.handleUndefined(data);
     this.submit.next(data);
   }
 
