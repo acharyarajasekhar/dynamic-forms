@@ -5,6 +5,7 @@ import { Platform } from '@ionic/angular';
 import { PhotosFormControlService } from './photos-form-control.service';
 import { ToastService } from '@acharyarajasekhar/ngx-utility-services';
 import { NgxImageCropperService } from '@acharyarajasekhar/ngx-image-cropper';
+import { NativePhotoViewerService } from '@acharyarajasekhar/ion-native-services';
 
 @Component({
   selector: 'photos-form-control',
@@ -41,7 +42,8 @@ export class PhotosFormControlComponent implements ControlValueAccessor {
     private platform: Platform,
     private photosFormControlService: PhotosFormControlService,
     private toast: ToastService,
-    private ngxImageCropService: NgxImageCropperService
+    private ngxImageCropService: NgxImageCropperService,
+    private nativePhotoViewerService: NativePhotoViewerService
   ) {
 
     if (this.platform.is('ios') || this.platform.is('android')) {
@@ -67,10 +69,17 @@ export class PhotosFormControlComponent implements ControlValueAccessor {
   }
 
   cropThisImage(imageIndex: number) {
-    this.ngxImageCropService.crop(this.selectedFiles[imageIndex]).then((croppedImage) => {
-      this.selectedFiles[imageIndex] = croppedImage;
-      this.emitChanges();
-    });
+    let image = this.selectedFiles[imageIndex];
+
+    if (image.startsWith("http")) {
+      this.nativePhotoViewerService.view(image);
+    }
+    else {
+      this.ngxImageCropService.crop(image).then((croppedImage) => {
+        this.selectedFiles[imageIndex] = croppedImage;
+        this.emitChanges();
+      });
+    }
   }
 
   async pickImage() {
