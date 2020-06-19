@@ -1,6 +1,11 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
+import { Plugins } from '@capacitor/core';
+import { ToastService } from '@acharyarajasekhar/ngx-utility-services';
+
+const { Geolocation } = Plugins;
+
 declare var google;
 
 @Component({
@@ -16,8 +21,8 @@ export class GoogleMapsComponent implements OnInit {
   private latLong: any;
 
   @Input() readonly: boolean = true;
-  @Input() lat: number;
-  @Input() lng: number;
+  @Input() lat: number = 16.5745306;
+  @Input() lng: number = 80.4361789;
   @Input() title: string;
   @Input() message: string;
 
@@ -37,7 +42,8 @@ export class GoogleMapsComponent implements OnInit {
   };
 
   constructor(
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private toast: ToastService
   ) { }
 
   ngOnInit() {
@@ -54,9 +60,9 @@ export class GoogleMapsComponent implements OnInit {
     this.mapOptions.center = new google.maps.LatLng(this.lat, this.lng);
     this.map = new google.maps.Map(this.mapElement.nativeElement, this.mapOptions);
 
-    let infoWindowContent = `<strong>${this.title}</strong><p>${this.message}</p>`;
+    let infoWindowContent = `<strong>GEO Location</strong>`;
 
-    if (!this.title) infoWindowContent = `<strong>Address</strong><p>${this.message}</p>`;
+    // if (!this.title) infoWindowContent = `<strong>GEO Location</strong>`;
 
     let infoWindow = new google.maps.InfoWindow({
       content: infoWindowContent
@@ -91,11 +97,21 @@ export class GoogleMapsComponent implements OnInit {
   }
 
   locateMe() {
-    navigator.geolocation.getCurrentPosition((position) => {
+    let options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+
+    Geolocation.getCurrentPosition(options).then(position => {
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
       this.initMap();
+    }).catch(err => {
+      this.toast.error("Unable to get your current location. Please make sure you enabled 'location' settings on your device...");
+      this.initMap();
     });
+
   }
 
   setCenter() {

@@ -1,9 +1,10 @@
 {
   "name": "@acharyarajasekhar/google-maps",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "peerDependencies": {
     "@angular/common": "^8.2.14",
-    "@angular/core": "^8.2.14"
+    "@angular/core": "^8.2.14",
+    "@capacitor/core": "^2.1.2"
   },
   "repository": {
     "type": "git",
